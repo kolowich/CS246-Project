@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Login login;
+    private HomeScreen home;
+    private boolean prototype = true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
