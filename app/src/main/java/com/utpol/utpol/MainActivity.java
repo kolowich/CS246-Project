@@ -19,4 +19,27 @@ public class MainActivity extends AppCompatActivity {
         // comment
     }
 
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public HomeScreen getHome() {
+        return home;
+    }
+
+    public void setHome(HomeScreen home) {
+        this.home = home;
+    }
+
+    public boolean isPrototype() {
+        return prototype;
+    }
+
+    public void setPrototype(boolean prototype) {
+        this.prototype = prototype;
+    }
 }
