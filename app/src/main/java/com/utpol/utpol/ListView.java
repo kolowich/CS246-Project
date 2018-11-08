@@ -1,6 +1,6 @@
 package com.utpol.utpol;
 
-public interface List {
+public interface ListView {
 
     public void pullList();
     public void openDetail();
