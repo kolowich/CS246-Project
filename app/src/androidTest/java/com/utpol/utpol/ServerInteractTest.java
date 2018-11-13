@@ -22,9 +22,9 @@ public class ServerInteractTest {
         Context context = InstrumentationRegistry.getTargetContext();
         Log.d("utpol","initializing parse");
         Parse.initialize(new Parse.Configuration.Builder(context)
-                .applicationId("utpol")
-                .clientKey("null")
-                .server("https://utpoladmin.herokuapp.com/parse/")
+                .applicationId("Qi6kBpZU4OCF3cj11qKtD3CB6FpFY45tHNTtLlj6")
+                .clientKey(null)
+                .server("https://utpol.herokuapp.com/parse/")
                 .build());
 
         System.out.println("initialized");

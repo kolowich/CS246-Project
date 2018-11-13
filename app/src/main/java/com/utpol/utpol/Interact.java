@@ -32,18 +32,18 @@ public class Interact {
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> peopleList, ParseException e) {
                 if (e == null) {
-                    Log.d("person", "Retrieved " + peopleList.toString());
+                    Log.d("person", "Retrieved " + peopleList.get(0).getString("First"));
                     response = peopleList.toString();
 
                 } else {
-                    Log.d("person", "Error: " + peopleList.toString());
+                    Log.d("person", "Error: ");
                     e.printStackTrace();
                 }
             }
         });
 
         try {
-            response = query.getFirst().toString();
+            response = query.getFirst().getString("First") + " " + query.getFirst().getString("Last");
             System.out.println(response);
         } catch (ParseException e) {
             e.printStackTrace();
