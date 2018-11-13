@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.utpol.utpol">
     <uses-permission android:name="android.permission.INTERNET"/>
-<<<<<<< HEAD
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-=======
->>>>>>> 7f4ea8c163e37a0778bb291a825c03d9e1ed1c10
 
     <application
         android:usesCleartextTraffic="true"
