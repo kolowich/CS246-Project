@@ -1,8 +1,11 @@
 package com.utpol.utpol;
 
+import android.content.Context;
+import android.view.View;
+
 import java.util.List;
 
-public class HomeScreen {
+public class HomeScreen extends View {
 
     private List<String> messages;
     private int date;
@@ -11,9 +14,21 @@ public class HomeScreen {
     private BillList bills;
     private CommitteeList committees;
 
+    public HomeScreen(Context context) {
+        super(context);
 
-    public HomeScreen(){
+        //Create Bill, Contact, and Committee over to the side.
+        bills = new BillList();
+        contacts = new ContactList();
+        committees = new CommitteeList();
+
     }
+
+
+    public void HomeScreen() {
+
+    }
+
 
     public void openContacts(){
 
