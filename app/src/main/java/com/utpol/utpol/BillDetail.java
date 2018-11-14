@@ -1,5 +1,7 @@
 package com.utpol.utpol;
 
+import com.parse.ParseObject;
+
 import java.util.Map;
 
 public class BillDetail implements DetailView {
@@ -15,6 +17,10 @@ public class BillDetail implements DetailView {
     private Map<String, Vote> vote;
 
     public BillDetail(){
+    }
+
+    public BillDetail(ParseObject in) {
+
     }
 
     public void pullAdditionalDetail(){

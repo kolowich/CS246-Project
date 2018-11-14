@@ -1,11 +1,18 @@
 package com.utpol.utpol;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.support.constraint.ConstraintLayout;
 import android.view.View;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.List;
 
-public class HomeScreen extends View {
+public class HomeScreen extends ConstraintLayout {
 
     private List<String> messages;
     private int date;
@@ -16,6 +23,21 @@ public class HomeScreen extends View {
 
     public HomeScreen(Context context) {
         super(context);
+
+        //pull the ads from the server
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Ad");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if(e == null) {
+                    for(ParseObject i: objects) {
+                        messages.add(i.getString("Graphic"));
+                    }
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         //Create Bill, Contact, and Committee over to the side.
         bills = new BillList();

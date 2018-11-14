@@ -30,14 +30,15 @@ public class MainActivity extends AppCompatActivity {
                 .clientKey(null)
                 .server("https://utpol.herokuapp.com/parse/")
                 .build());
+        login();
     }
 
-    public void login(View view) {
+    public void login() {
 
         Login login = new Login();
 
         if(PROTOTYPE) {
-            setContentView(home);
+            setContentView(R.layout.home_screen);
         }
         else {
             login.setUsername(""); //put the editText's string here
