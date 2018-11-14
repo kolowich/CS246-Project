@@ -2,6 +2,7 @@ package com.utpol.utpol;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private LoginValidator login;
     private HomeScreen home;
     private static final boolean PROTOTYPE = true;
+    private SharedPreferences sharedPreferences = this.getSharedPreferences("utpol", MODE_PRIVATE);
 
 
     @Override
@@ -21,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String location = sharedPreferences.getString(HomeScreen.LOCATION, "Unknown Location");
         //create the HomeScreen View
-        home = new HomeScreen(this);
+        home = new HomeScreen(this, location);
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
@@ -61,5 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setHome(HomeScreen home) {
         this.home = home;
+    }
+
+    public SharedPreferences getSharedPreferencesObject() {
+        return sharedPreferences;
     }
 }

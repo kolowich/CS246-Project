@@ -1,6 +1,7 @@
 package com.utpol.utpol;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
@@ -14,6 +15,8 @@ import java.util.List;
 
 public class HomeScreen extends ConstraintLayout {
 
+    public static final String LOCATION = "location";
+
     private List<String> messages;
     private int date;
     private String location;
@@ -21,10 +24,19 @@ public class HomeScreen extends ConstraintLayout {
     private BillList bills;
     private CommitteeList committees;
 
-    public HomeScreen(Context context) {
+    public HomeScreen(Context context, String locationIn) {
         super(context);
 
-        SharedPreferences pref = context.get
+        location = "Weber";
+
+        if(locationIn != null){
+            location = locationIn;
+        }
+
+        SharedPreferences pref = context.getSharedPreferences("utpol",context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+        editor.putString(LOCATION , location);
 
         //pull the ads from the server
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Ad");
