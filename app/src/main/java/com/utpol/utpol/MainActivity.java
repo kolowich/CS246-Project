@@ -30,12 +30,11 @@ public class MainActivity extends AppCompatActivity {
                 .clientKey(null)
                 .server("https://utpol.herokuapp.com/parse/")
                 .build());
-        login();
     }
 
-    public void login() {
+    public void login(View view) {
 
-        Login login = new Login();
+        LoginValidator login = new LoginValidator();
 
         if(PROTOTYPE) {
             setContentView(R.layout.home_screen);
@@ -48,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public Login getLogin() {
+    public LoginValidator getLogin() {
         return login;
     }
 
-    public void setLogin(Login login) {
+    public void setLogin(LoginValidator login) {
         this.login = login;
     }
 

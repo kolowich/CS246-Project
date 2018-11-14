@@ -24,6 +24,8 @@ public class HomeScreen extends ConstraintLayout {
     public HomeScreen(Context context) {
         super(context);
 
+        SharedPreferences pref = context.get
+
         //pull the ads from the server
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Ad");
         query.findInBackground(new FindCallback<ParseObject>() {
