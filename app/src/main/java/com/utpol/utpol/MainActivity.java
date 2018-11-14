@@ -11,7 +11,7 @@ import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Login login;
+    private LoginValidator login;
     private HomeScreen home;
     private static final boolean PROTOTYPE = true;
 
