@@ -1,7 +1,5 @@
 package com.utpol.utpol;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         LoginValidator login = new LoginValidator();
 
         if(PROTOTYPE) {
-            setContentView(R.layout.home_screen);
+            setContentView(R.layout.activity_home);
         }
         else {
             login.setUsername(""); //put the editText's string here
