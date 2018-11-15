@@ -38,8 +38,8 @@
         app:layout_constraintTop_toBottomOf="@+id/homeTextView1" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="365dp"
+        android:id="@+id/homeTextView4"
+        android:layout_width="362dp"
         android:layout_height="85dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
@@ -53,51 +53,54 @@
         app:layout_constraintTop_toBottomOf="@+id/homeTextView2" />
 
     <TextView
-        android:id="@+id/homeTextView3"
+        android:id="@+id/homeTextView5"
         android:layout_width="362dp"
-        android:layout_height="196dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         android:text="@string/homeMessage2"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextView4" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/homeTextView3"
         android:layout_width="230dp"
-        android:layout_height="33dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Tip of the day"
         android:textAlignment="textStart"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/homeTextView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="364dp"
-        android:layout_height="205dp"
+        android:id="@+id/homeTextView6"
+        android:layout_width="362dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="52dp"
         android:fontFamily="sans-serif"
+        android:paddingTop="15dp"
         android:text="@string/homeMessage3"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView3" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextView5"
+        app:layout_constraintVertical_bias="1.0" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
