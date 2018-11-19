@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">UTPOL</string>
-    <string name="locationDay">Weber Day 0</string>
+    // Home
+    <string name="homeDay">Day 31</string>
+    <string name="homeCity">City</string>
+    <string name="homeMessage1">Message1 example text display for #UTPOL. Wear something blue for BYUI University pride. There is a meet and greet at 00:00pm in the I-Center. </string>
+    <string name="homeMessage2">Message2 example text display for #UTPOL. Last day to request bills or appropriations without floor approval.</string>
+    <string name="homeMessage3">Message3 example text display for #UTPOL. Last day to approve bills or numbering without floor approval.</string>
+
 </resources>
