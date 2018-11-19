@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
@@ -39,14 +41,29 @@ public class MainActivity extends AppCompatActivity {
 
         LoginValidator login = new LoginValidator();
 
+        EditText user = (EditText) findViewById(R.id.editText3);
+        EditText pass = (EditText) findViewById(R.id.editText);
+
+        String userName = user.getText().toString();
+        String password = pass.getText().toString();
+
         if(PROTOTYPE) {
             setContentView(R.layout.home_screen);
         }
         else {
-            login.setUsername(""); //put the editText's string here
-            login.setPassword(""); //put the editText's string here
+            login.setUsername(userName); //put the editText's string here
+            login.setPassword(password); //put the editText's string here
 
-            login.validateUserAndLogIn();
+            boolean valid = login.validateUserAndLogIn();
+
+            if(valid) {
+               setContentView(R.layout.home_screen);
+            }
+            else {
+                Toast toast = new Toast(this);
+                toast.setText("Username or Password are incorrect");
+                toast.show();
+            }
         }
     }
 

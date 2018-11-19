@@ -7,28 +7,37 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Interact {
 
 
-    private String response;
+    private List<ParseObject> response;
     private String request;
 
 
     public Interact(){
+        response = new ArrayList<>();
     }
 
-    public void serverRequest(){
+    public void serverRequest() {
+        //successful query example
+        Collection<String> keys = new ArrayList<>();
+        keys.add("First");
+        keys.add("Last");
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery(request);
-        query.whereEqualTo("Committee","Natural Resources, Agriculture, and Environmental Quality Appropriations Subcommittee");
-        query.whereEqualTo("Email", "leeperry@le.utah.gov");
+        query.whereEqualTo("Committee", "Natural Resources, Agriculture, and Environmental Quality Appropriations Subcommittee")
+                .whereEqualTo("Email", "leeperry@le.utah.gov");
+
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> peopleList, ParseException e) {
                 if (e == null) {
                     Log.d("person", "Retrieved " + peopleList.get(0).getString("First"));
-                    response = peopleList.toString();
+                    response = peopleList;
+                    printList();
 
                 } else {
                     Log.d("person", "Error: ");
@@ -36,21 +45,18 @@ public class Interact {
                 }
             }
         });
+    }
+    public void printList(){
+        //other stuff
+        for (ParseObject obj : response) {
+            String outString = obj.getString("First") + " " + obj.getString("Last");
+            System.out.println(outString);
 
-        try {
-            response = query.getFirst().getString("First") + " " + query.getFirst().getString("Last");
-            System.out.println(response);
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
     }
 
     public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
+        return response.toString();
     }
 
     public String getRequest() {

@@ -32,6 +32,7 @@ public class LoginValidator {
                 }
                 else {
                     e.printStackTrace();
+                    validated = false;
                 }
             }
         });
