@@ -24,6 +24,11 @@ public class HomeScreen extends ConstraintLayout {
     private BillList bills;
     private CommitteeList committees;
 
+    /**
+     *
+     * @param context
+     * @param locationIn
+     */
     public HomeScreen(Context context, String locationIn) {
         super(context);
 

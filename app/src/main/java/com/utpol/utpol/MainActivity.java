@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         String password = pass.getText().toString();
 
         if(PROTOTYPE) {
-            setContentView(R.layout.home_screen);
+            //setContentView(R.layout.home_screen);
         }
         else {
             login.setUsername(userName); //put the editText's string here
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             boolean valid = login.validateUserAndLogIn();
 
             if(valid) {
-               setContentView(R.layout.home_screen);
+               //setContentView(R.layout.home_screen);
             }
             else {
                 Toast toast = new Toast(this);
