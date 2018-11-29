@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static long animationDuration = 1;
     private static ConstraintLayout homeView = null;
     private static ConstraintLayout loginView = null;
+    private static ConstraintLayout navigationView = null;
 
 
     @Override
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         home = new HomeScreen(this, null);
         homeView = findViewById(R.id.home_overlay);
         loginView = findViewById(R.id.login_overlay);
+        navigationView = findViewById(R.id.navigation_overlay);
+
 
         //get the size of the screen/window
         Display display = getWindowManager().getDefaultDisplay();
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         //translate the forest_overlay off screen without animation before anyone can see it
         homeView.setX(size.x);
+        navigationView.setX(size.x);
         loginView.setX(new Point(0,0).x);
 
         //initialize the database's information so that we can contact it easily later
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if(PROTOTYPE) {
             loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
             homeView.animate().x(0).setDuration(animationDuration);
+            navigationView.animate().x(0).setDuration(animationDuration);
         }
         else {
             login.setUsername(userName); //put the editText's string here
@@ -83,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             if (login.isValidated()) {
                 loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
                 homeView.animate().x(0).setDuration(animationDuration);
+                navigationView.animate().x(0).setDuration(animationDuration);
             } else {
                 Toast toast = Toast.makeText(home.getContext(),"Username or Password are incorrect", (int) 1000);
                 toast.show();
