@@ -115,4 +115,50 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="4dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/contactsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+
+    <Button
+        android:id="@+id/contactsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="4dp"
+        android:text="Contacts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/billsButton"
+        app:layout_constraintStart_toEndOf="@+id/homeButton"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+
+    <Button
+        android:id="@+id/billsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Bills"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/committeeButton"
+        app:layout_constraintStart_toEndOf="@+id/contactsButton"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+
+    <Button
+        android:id="@+id/committeeButton"
+        android:layout_width="111dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="4dp"
+        android:text="Committee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/billsButton"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+
 </android.support.constraint.ConstraintLayout>
