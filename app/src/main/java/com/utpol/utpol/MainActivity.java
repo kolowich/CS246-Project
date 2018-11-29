@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static LoginValidator login;
     private static HomeScreen home;
-    private static final boolean PROTOTYPE = true;
+    private static final boolean PROTOTYPE = false;
     //private SharedPreferences sharedPreferences = this.getSharedPreferences("utpol", MODE_PRIVATE);
     private static long animationDuration = 1;
     private static ConstraintLayout homeView = null;

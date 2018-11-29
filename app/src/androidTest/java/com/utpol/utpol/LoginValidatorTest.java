@@ -22,7 +22,7 @@ public class LoginValidatorTest {
                 .server("https://utpol.herokuapp.com/parse/")
                 .build());
 
-        LoginValidator validator = new LoginValidator("Adamkolowich" , "82^Zt@0X7%@8");
+        LoginValidator validator = new LoginValidator("Example" , "example");
         validator.validateUserAndLogIn();
 
         assertTrue(validator.isValidated());
