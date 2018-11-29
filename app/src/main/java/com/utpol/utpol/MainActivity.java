@@ -3,8 +3,11 @@ package com.utpol.utpol;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static LoginValidator login;
     private static HomeScreen home;
-    private static final boolean PROTOTYPE = false;
+    private static final boolean PROTOTYPE = true;
     //private SharedPreferences sharedPreferences = this.getSharedPreferences("utpol", MODE_PRIVATE);
+    private static long animationDuration = 1;
+    private static ConstraintLayout homeView = null;
+    private static ConstraintLayout loginView = null;
 
 
     @Override
@@ -28,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
         //String location = sharedPreferences.getString(HomeScreen.LOCATION, "Unknown Location");
         //create the HomeScreen View
         home = new HomeScreen(this, null);
+        homeView = findViewById(R.id.home_overlay);
+        homeView = findViewById(R.id.login_overlay);
+
+        //get the size of the screen/window
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        //translate the forest_overlay off screen without animation before anyone can see it
+        homeView.setX(size.x);
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
@@ -47,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         String password = pass.getText().toString();
 
         if(PROTOTYPE) {
-            home.setX(0);
+            loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
+            homeView.animate().x(0).setDuration(animationDuration);
         }
         else {
             login.setUsername(userName); //put the editText's string here
@@ -55,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
             login.validateUserAndLogIn();
 
-            Toast toast = new Toast(this);
-            toast.setText("Loggin in");
+            Toast toast = Toast.makeText(this,"Logging in", (int) 1000);
             toast.show();
         }
     }
@@ -64,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
     public static void checkValidation() {
         if(login != null && home != null) {
             if (login.isValidated()) {
-                home.setX(0);
+                loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
+                homeView.animate().x(0).setDuration(animationDuration);
             } else {
-                Toast toast = new Toast(home.getContext());
-                toast.setText("Username or Password are incorrect");
+                Toast toast = Toast.makeText(home.getContext(),"Username or Password are incorrect", (int) 1000);
                 toast.show();
             }
         }
