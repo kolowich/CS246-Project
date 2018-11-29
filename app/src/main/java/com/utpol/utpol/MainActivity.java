@@ -14,10 +14,10 @@ import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LoginValidator login;
-    private HomeScreen home;
-    private static final boolean PROTOTYPE = true;
-    private SharedPreferences sharedPreferences = this.getSharedPreferences("utpol", MODE_PRIVATE);
+    private static LoginValidator login;
+    private static HomeScreen home;
+    private static final boolean PROTOTYPE = false;
+    //private SharedPreferences sharedPreferences = this.getSharedPreferences("utpol", MODE_PRIVATE);
 
 
     @Override
@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String location = sharedPreferences.getString(HomeScreen.LOCATION, "Unknown Location");
+        //String location = sharedPreferences.getString(HomeScreen.LOCATION, "Unknown Location");
         //create the HomeScreen View
-        home = new HomeScreen(this, location);
+        home = new HomeScreen(this, null);
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-
-        LoginValidator login = new LoginValidator();
+        login = new LoginValidator();
 
         EditText user = (EditText) findViewById(R.id.editText3);
         EditText pass = (EditText) findViewById(R.id.editText);
@@ -48,25 +47,31 @@ public class MainActivity extends AppCompatActivity {
         String password = pass.getText().toString();
 
         if(PROTOTYPE) {
-            //setContentView(R.layout.home_screen);
+            home.setX(0);
         }
         else {
             login.setUsername(userName); //put the editText's string here
             login.setPassword(password); //put the editText's string here
 
-            boolean valid = login.validateUserAndLogIn();
+            login.validateUserAndLogIn();
 
-            if(valid) {
-               //setContentView(R.layout.home_screen);
-            }
-            else {
-                Toast toast = new Toast(this);
+            Toast toast = new Toast(this);
+            toast.setText("Loggin in");
+            toast.show();
+        }
+    }
+
+    public static void checkValidation() {
+        if(login != null && home != null) {
+            if (login.isValidated()) {
+                home.setX(0);
+            } else {
+                Toast toast = new Toast(home.getContext());
                 toast.setText("Username or Password are incorrect");
                 toast.show();
             }
         }
     }
-
     public LoginValidator getLogin() {
         return login;
     }
@@ -83,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         this.home = home;
     }
 
+    /*
     public SharedPreferences getSharedPreferencesObject() {
         return sharedPreferences;
     }
+    */
 }

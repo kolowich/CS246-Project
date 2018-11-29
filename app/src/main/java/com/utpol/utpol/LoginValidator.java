@@ -22,17 +22,27 @@ public class LoginValidator {
         password = pass;
     }
 
-    public boolean validateUserAndLogIn() {
+    public static boolean isValidated() {
+        return validated;
+    }
+
+    public static ParseUser getMainUser() {
+        return mainUser;
+    }
+
+    public void validateUserAndLogIn() {
 
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (e == null) {
                     validated = true;
                     mainUser = user;
+                    MainActivity.checkValidation();
                 }
                 else {
                     e.printStackTrace();
                     validated = false;
+                    MainActivity.checkValidation();
                 }
             }
         });
@@ -40,7 +50,7 @@ public class LoginValidator {
         username = null;
         password = null;
 
-        return validated;
+        return;
     }
 
     public void logOut() {

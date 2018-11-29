@@ -42,7 +42,7 @@ public class HomeScreen extends ConstraintLayout {
         SharedPreferences.Editor editor = pref.edit();
 
         editor.putString(LOCATION , location);
-
+        /*
         //pull the ads from the server
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Ad");
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -57,7 +57,7 @@ public class HomeScreen extends ConstraintLayout {
                 }
             }
         });
-
+        */
         //Create Bill, Contact, and Committee over to the side.
         bills = new BillList();
         contacts = new ContactList();

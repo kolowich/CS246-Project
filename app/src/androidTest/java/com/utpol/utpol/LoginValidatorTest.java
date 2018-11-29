@@ -23,8 +23,8 @@ public class LoginValidatorTest {
                 .build());
 
         LoginValidator validator = new LoginValidator("Adamkolowich" , "82^Zt@0X7%@8");
-        boolean valid = validator.validateUserAndLogIn();
+        validator.validateUserAndLogIn();
 
-        assertTrue(valid);
+        assertTrue(validator.isValidated());
     }
 }
