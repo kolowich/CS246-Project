@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //create the HomeScreen View
         home = new HomeScreen(this, null);
         homeView = findViewById(R.id.home_overlay);
-        homeView = findViewById(R.id.login_overlay);
+        loginView = findViewById(R.id.login_overlay);
 
         //get the size of the screen/window
         Display display = getWindowManager().getDefaultDisplay();
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         //translate the forest_overlay off screen without animation before anyone can see it
         homeView.setX(size.x);
+        loginView.setX(new Point(0,0).x);
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
