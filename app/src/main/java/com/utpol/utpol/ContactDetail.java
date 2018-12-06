@@ -17,6 +17,12 @@ public class ContactDetail implements DetailView {
     public ContactDetail(){
     }
 
+    public ContactDetail(String first, String last, String phone) {
+        firstName = first;
+        lastName = last;
+        phoneNumber = phone;
+    }
+
     public void pullAdditionalDetail(){
 
     }

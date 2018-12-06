@@ -1,5 +1,6 @@
 package com.utpol.utpol;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,13 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class
+MainActivity extends AppCompatActivity {
 
     private static LoginValidator login;
     private static HomeScreen home;
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     public void setHome(HomeScreen home) {
         this.home = home;
     }
+
 
     /*
     public SharedPreferences getSharedPreferencesObject() {
