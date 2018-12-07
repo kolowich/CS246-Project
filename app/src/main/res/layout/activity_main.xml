@@ -291,5 +291,140 @@
     </android.support.constraint.ConstraintLayout>
 
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/contact_directory_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:clickable="true"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/contactListTitle"
+            android:layout_width="210dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="99dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="78dp"
+            android:elevation="8dp"
+            android:ems="10"
+            android:inputType="none|textPersonName"
+            android:text="@string/contactListTitle"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/contactListView"
+            android:layout_width="375dp"
+            android:layout_height="451dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contactListTitle" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bill_directory_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:clickable="true"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/billListTitle"
+            android:layout_width="210dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="99dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="78dp"
+            android:elevation="8dp"
+            android:ems="10"
+            android:inputType="none|textPersonName"
+            android:text="@string/billListTitle"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/billListView"
+            android:layout_width="375dp"
+            android:layout_height="451dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/billListTitle" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/committee_directory_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:clickable="true"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/committeeListTitle"
+            android:layout_width="210dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="99dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="78dp"
+            android:elevation="8dp"
+            android:ems="10"
+            android:inputType="none|textPersonName"
+            android:text="@string/committeeListTitle"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/committeeListView"
+            android:layout_width="375dp"
+            android:layout_height="451dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/committeeListTitle" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

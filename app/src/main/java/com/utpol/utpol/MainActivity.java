@@ -1,6 +1,7 @@
 package com.utpol.utpol;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,10 +13,14 @@ import android.view.Display;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class
 MainActivity extends AppCompatActivity {
@@ -28,6 +33,15 @@ MainActivity extends AppCompatActivity {
     private static ConstraintLayout homeView = null;
     private static ConstraintLayout loginView = null;
     private static ConstraintLayout navigationView = null;
+    private static ConstraintLayout contact_directory_overlay = null;
+    private static ConstraintLayout bill_directory_overlay = null;
+    private static ConstraintLayout committee_directory_overlay = null;
+    List<ContactDetail> listContactDetail = new ArrayList<>();
+    List<BillDetail> listBillDetail = new ArrayList<>();
+    List<CommitteeDetail> listCommitteeDetail = new ArrayList<>();
+    private ContactDetail contactDetail;
+    private BillDetail billDetail;
+    private CommitteeDetail committeeDetail;
 
 
     @Override
@@ -41,6 +55,9 @@ MainActivity extends AppCompatActivity {
         homeView = findViewById(R.id.home_overlay);
         loginView = findViewById(R.id.login_overlay);
         navigationView = findViewById(R.id.navigation_overlay);
+        contact_directory_overlay = findViewById(R.id.contact_directory_overlay);
+        bill_directory_overlay = findViewById(R.id.bill_directory_overlay);
+        committee_directory_overlay = findViewById(R.id.bill_directory_overlay);
 
 
         //get the size of the screen/window
@@ -52,6 +69,9 @@ MainActivity extends AppCompatActivity {
         homeView.setX(size.x);
         navigationView.setX(size.x);
         loginView.setX(new Point(0,0).x);
+        contact_directory_overlay.setX(size.x);
+        bill_directory_overlay.setX(size.x);
+        committee_directory_overlay.setX(size.x);
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
@@ -114,6 +134,78 @@ MainActivity extends AppCompatActivity {
         this.home = home;
     }
 
+
+    public void showScreen(ConstraintLayout overlay){
+        homeView.animate().x(homeView.getWidth()).setDuration(animationDuration);
+        loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
+        contact_directory_overlay.animate().x(contact_directory_overlay.getWidth()).setDuration(animationDuration);
+        bill_directory_overlay.animate().x(bill_directory_overlay.getWidth()).setDuration(animationDuration);
+        committee_directory_overlay.animate().x(committee_directory_overlay.getWidth()).setDuration(animationDuration);
+
+
+
+        navigationView.animate().x(0).setDuration(animationDuration);
+        overlay.animate().x(0).setDuration(animationDuration);
+    }
+
+
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Reset the variables
+            contactDetail = null;
+            billDetail = null;
+            committeeDetail = null;
+
+            // Get the String included in the Intent.
+            String ItemName = intent.getStringExtra("text");
+
+            // Figure out if the ItemName is a ContactDetail, BillDetail, or CommitteeDetail.
+            for (ContactDetail contact: listContactDetail){
+                if(ItemName.contains(contact.getFirstName()) && ItemName.contains(contact.getLastName()) && ItemName.contains(contact.getPhoneNumber())){
+                    contactDetail = contact;
+                }
+            }
+            for (BillDetail bill: listBillDetail){
+                if(ItemName.contains(bill.getName()) && ItemName.contains(bill.getCommittee().getNameCommittee())){
+                    billDetail = bill;
+                }
+            }
+            if(billDetail == null) {
+                for (CommitteeDetail committee : listCommitteeDetail) {
+                    if (ItemName.contains(committee.getNameCommittee())) {
+                        committeeDetail = committee;
+                    }
+                }
+            }
+
+            //Display the specific Detail screen that is needed.
+            if(contactDetail != null) {
+                // TODO Add the database call here to get the details for the particular contact. The contactDetail should have the basic details.
+
+                showScreen(contact_directory_overlay);
+
+                // TODO Add the code to display the contact in the various parts of the contact detail screen
+
+            }
+
+            if(billDetail != null) {
+                // TODO Add the database call here to get the details for the particular bill. The billDetail should have the basic details.
+
+                showScreen(bill_directory_overlay);
+
+                // TODO Add the code to display the contact in the various parts of the contact detail screen
+            }
+
+            if(committeeDetail != null) {
+                // TODO Add the database call here to get the details for the particular committee. The committeeDetail should have the basic details.
+
+                showScreen(committee_directory_overlay);
+
+                // TODO Add the code to display the contact in the various parts of the contact detail screen
+            }
+        }
+    };
 
     /*
     public SharedPreferences getSharedPreferencesObject() {
