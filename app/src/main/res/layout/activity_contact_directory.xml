@@ -6,46 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="378dp"
-        android:layout_height="457dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="50dp"
-        android:elevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactListTitle">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </ScrollView>
-
-    <EditText
+    <TextView
         android:id="@+id/contactListTitle"
         android:layout_width="210dp"
         android:layout_height="61dp"
         android:layout_marginStart="99dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="78dp"
-        android:layout_marginBottom="6dp"
         android:elevation="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="none|textPersonName"
         android:text="@string/contactListTitle"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textAppearance="@android:style/TextAppearance.Large"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:layout_width="375dp"
+        android:layout_height="451dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactListTitle" />
 
 </android.support.constraint.ConstraintLayout>
