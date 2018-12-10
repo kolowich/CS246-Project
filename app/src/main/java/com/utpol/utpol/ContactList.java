@@ -40,7 +40,7 @@ public class ContactList extends Activity implements ListView {
             }
         });
     }
-    
+
     public static void addContact(String first, String last, String number) {
         details.add(new ContactDetail(first, last, number));
         System.out.println(first);
