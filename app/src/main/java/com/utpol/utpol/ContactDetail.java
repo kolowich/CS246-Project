@@ -119,8 +119,8 @@ public class ContactDetail extends Activity implements DetailView {
         this.govInfo = govInfo;
     }
 
-
-    public String toStringList(){
+    @Override
+    public String toString(){
         String string = new String();
         string = this.firstName + " " + this.lastName;
         if(this.phoneNumber != null){

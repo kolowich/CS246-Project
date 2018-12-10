@@ -23,6 +23,6 @@ public class BillList implements ListView {
     }
 
     public void setDetails(List<BillDetail> details) {
-        this.details = details;
+        this.details.addAll(details);
     }
 }

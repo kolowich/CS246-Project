@@ -51,6 +51,6 @@ public class ContactList extends Activity implements ListView {
     }
 
     public void setDetails(List<ContactDetail> details) {
-        this.details = details;
+        this.details.addAll(details);
     }
 }

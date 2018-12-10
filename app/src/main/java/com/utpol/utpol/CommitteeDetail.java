@@ -49,7 +49,8 @@ public class CommitteeDetail implements DetailView {
         this.locationNextMeeting = locationNextMeeting;
     }
 
-    public String toStringList(){
+    @Override
+    public String toString(){
         return this.nameCommittee;
     }
 }

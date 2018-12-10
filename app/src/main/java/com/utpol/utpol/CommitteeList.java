@@ -20,6 +20,6 @@ public class CommitteeList implements ListView {
     }
 
     public void setDetails(List<CommitteeDetail> details) {
-        this.details = details;
+        this.details.addAll(details);
     }
 }

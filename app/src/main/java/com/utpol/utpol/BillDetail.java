@@ -99,7 +99,8 @@ public class BillDetail implements DetailView {
         this.vote = vote;
     }
 
-    public String toStringList(){
+    @Override
+    public String toString(){
         String string = new String();
         string = this.name + " " + this.committee.getNameCommittee();
         return string;
