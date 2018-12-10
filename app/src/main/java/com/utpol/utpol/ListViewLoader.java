@@ -41,7 +41,7 @@ public class ListViewLoader extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.activity_list_view, null);
         TextView listObject = (TextView) view.findViewById(R.id.listViewTextView);
-        listObject.setText(objectList.get(i).toString());
+        listObject.setText(((DetailView)objectList.get(i)).toStringList());
         return view;
     }
 

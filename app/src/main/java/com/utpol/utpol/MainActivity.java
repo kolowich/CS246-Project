@@ -11,6 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.Parse;
@@ -36,6 +37,22 @@ MainActivity extends AppCompatActivity {
     private ListView contactListView = null;
     private ListView billListView = null;
     private ListView committeeListView = null;
+    private TextView contactNameTextViewName = null;
+    private TextView contactNameTextViewParty = null;
+    private TextView contactNameTextViewDistrict = null;
+    private TextView contactNameTextViewLeadershipPosition = null;
+    private TextView contactLocationTextViewLocation = null;
+    private TextView contactContInfoTextViewStreet = null;
+    private TextView contactContInfoTextViewCityStateZip = null;
+    private TextView contactContInfoTextViewPhone = null;
+    private TextView contactContInfoTextViewEmail = null;
+    private TextView contactContInfoTextViewTwitter = null;
+    private TextView contactInternTextViewName = null;
+    private TextView contactCommitteeTextViewCommittee = null;
+    private TextView contactEduTextViewDegreeMajorSchool = null;
+
+
+
     private ContactList listContactDetail = new ContactList();
     private BillList listBillDetail = new BillList();
     private CommitteeList listCommitteeDetail = new CommitteeList();
@@ -62,6 +79,19 @@ MainActivity extends AppCompatActivity {
         contactListView = findViewById(R.id.contactListView);
         billListView = findViewById(R.id.billListView);
         committeeListView = findViewById(R.id.committeeListView);
+        contactNameTextViewName = findViewById(R.id.contactNameTextViewName);
+        contactNameTextViewParty = findViewById(R.id.contactNameTextViewParty);
+        contactNameTextViewDistrict = findViewById(R.id.contactNameTextViewDistrict);
+        contactNameTextViewLeadershipPosition = findViewById(R.id.contactNameTextViewLeadershipPosition);
+        contactLocationTextViewLocation = findViewById(R.id.contactLocationTextViewLocation);
+        contactContInfoTextViewStreet = findViewById(R.id.contactContInfoTextViewStreet);
+        contactContInfoTextViewCityStateZip = findViewById(R.id.contactContInfoTextViewCityStateZip);
+        contactContInfoTextViewPhone = findViewById(R.id.contactContInfoTextViewPhone);
+        contactContInfoTextViewEmail = findViewById(R.id.contactContInfoTextViewEmail);
+        contactContInfoTextViewTwitter = findViewById(R.id.contactContInfoTextViewTwitter);
+        contactInternTextViewName = findViewById(R.id.contactInternTextViewName);
+        contactCommitteeTextViewCommittee = findViewById(R.id.contactCommitteeTextViewCommittee);
+        contactEduTextViewDegreeMajorSchool = findViewById(R.id.contactEduTextViewDegreeMajorSchool);
 
         //get the size of the screen/window
         Display display = getWindowManager().getDefaultDisplay();
@@ -188,7 +218,51 @@ MainActivity extends AppCompatActivity {
 
                 showScreen(contact_detail1_overlay);
 
-                // TODO Add the code to display the contact in the various parts of the contact detail screen
+                if(contactDetail.getFirstName() != null && contactDetail.getLastName() != null){
+                    contactNameTextViewName.setText(contactDetail.getFirstName() + " " + contactDetail.getLastName());
+                }
+                if(contactDetail.getGovInfo().getParty() != null){
+                    contactNameTextViewParty.setText(contactDetail.getGovInfo().getParty());
+                }
+                if(contactDetail.getGovInfo().getDistrictNumber() != null){
+                    contactNameTextViewDistrict.setText("District " + contactDetail.getGovInfo().getDistrictNumber());
+                }
+                if(contactDetail.getGovInfo().getLeadPos() != null){
+                    contactNameTextViewLeadershipPosition.setText(contactDetail.getGovInfo().getLeadPos());
+                }
+                if(contactDetail.getGovInfo().getLocation() != null){
+                    contactLocationTextViewLocation.setText(contactDetail.getGovInfo().getLocation());
+                }
+                if(contactDetail.getAddress().getStreet() != null){
+                    contactContInfoTextViewStreet.setText(contactDetail.getAddress().getStreet());
+                }
+                if(contactDetail.getAddress().getCity() != null && contactDetail.getAddress().getState() != null && contactDetail.getAddress().getZip() != null){
+                    contactContInfoTextViewCityStateZip.setText(contactDetail.getAddress().getCity() + ", " + contactDetail.getAddress().getState() + " " + contactDetail.getAddress().getZip());
+                }
+                if(contactDetail.getPhoneNumber() != null){
+                    contactContInfoTextViewPhone.setText(contactDetail.getPhoneNumber());
+                }
+                if(contactDetail.geteContact().getEmail() != null){
+                    contactContInfoTextViewEmail.setText(contactDetail.geteContact().getEmail());
+                }
+                if(contactDetail.geteContact().getTwitter() != null){
+                    contactContInfoTextViewTwitter.setText(contactDetail.geteContact().getTwitter());
+                }
+                if(contactDetail.getGovInfo().getInterns() != null){
+                    for(String intern: contactDetail.getGovInfo().getInterns()) {
+                        contactInternTextViewName.setText(intern + "\n");
+                    }
+                }
+                if(contactDetail.getGovInfo().getCommittees() != null){
+                    for(CommitteeDetail committee: contactDetail.getGovInfo().getCommittees()) {
+                        contactCommitteeTextViewCommittee.setText(committee.getNameCommittee() + "\n");
+                    }
+                }
+                if(contactDetail.getEducation() != null){
+                    for(String education: contactDetail.getEducation()) {
+                        contactEduTextViewDegreeMajorSchool.setText(education + "\n");
+                    }
+                }
 
             }
 

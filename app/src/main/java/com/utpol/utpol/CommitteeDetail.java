@@ -48,4 +48,8 @@ public class CommitteeDetail implements DetailView {
     public void setLocationNextMeeting(String locationNextMeeting) {
         this.locationNextMeeting = locationNextMeeting;
     }
+
+    public String toStringList(){
+        return this.nameCommittee;
+    }
 }

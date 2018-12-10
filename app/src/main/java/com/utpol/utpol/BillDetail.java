@@ -98,4 +98,10 @@ public class BillDetail implements DetailView {
     public void setVote(Map<String, Vote> vote) {
         this.vote = vote;
     }
+
+    public String toStringList(){
+        String string = new String();
+        string = this.name + " " + this.committee.getNameCommittee();
+        return string;
+    }
 }

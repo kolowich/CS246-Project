@@ -90,4 +90,14 @@ public class ContactDetail implements DetailView {
     public void setGovInfo(GovInfo govInfo) {
         this.govInfo = govInfo;
     }
+
+
+    public String toStringList(){
+        String string = new String();
+        string = this.firstName + " " + this.lastName;
+        if(this.phoneNumber != null){
+            string = this.firstName + " " + this.lastName + "\n" + this.phoneNumber;
+        }
+        return string;
+    }
 }

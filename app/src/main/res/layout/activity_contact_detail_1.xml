@@ -17,60 +17,72 @@
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/contactNameTextView1"
+        android:id="@+id/contactNameTextViewTitle"
         android:layout_width="190dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
+        android:text="Name"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactNameTextView2"
+        app:layout_constraintBottom_toTopOf="@+id/contactNameTextViewName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/contactNameTextView2"
+        android:id="@+id/contactNameTextViewName"
         android:layout_width="190dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
+        android:text=""
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactNameTextView3"
+        app:layout_constraintBottom_toTopOf="@+id/contactNameTextViewParty"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactNameTextView1" />
+        app:layout_constraintTop_toBottomOf="@+id/contactNameTextViewTitle" />
 
     <TextView
-        android:id="@+id/contactNameTextView3"
+        android:id="@+id/contactNameTextViewParty"
         android:layout_width="190dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
+        android:text=""
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactNameTextView4"
+        app:layout_constraintBottom_toTopOf="@+id/contactNameTextViewDistrict"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactNameTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/contactNameTextViewName" />
 
     <TextView
-        android:id="@+id/contactNameTextView4"
+        android:id="@+id/contactNameTextViewDistrict"
         android:layout_width="190dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactNameTextViewLeadershipPosition"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactNameTextView3" />
+        app:layout_constraintTop_toBottomOf="@+id/contactNameTextViewParty" />
 
     <TextView
-        android:id="@+id/contactLocationTextView1"
+        android:id="@+id/contactNameTextViewLeadershipPosition"
+        android:layout_width="185dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="6dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactNameTextViewDistrict" />
+
+    <TextView
+        android:id="@+id/contactLocationTextViewTitle"
         android:layout_width="190dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
@@ -79,23 +91,23 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Location"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactLocationTextView2"
+        app:layout_constraintBottom_toTopOf="@+id/contactNameTextViewName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactNameTextView4" />
+        app:layout_constraintTop_toBottomOf="@+id/contactNameTextViewLeadershipPosition" />
 
     <TextView
-        android:id="@+id/contactLocationTextView2"
+        android:id="@+id/contactLocationTextViewLocation"
         android:layout_width="190dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactLocationTextView1" />
+        app:layout_constraintTop_toBottomOf="@+id/contactLocationTextViewTitle" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView1"
+        android:id="@+id/contactContInfoTextViewTitle"
         android:layout_width="359dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
@@ -109,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/contactImageView" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView2"
+        android:id="@+id/contactContInfoTextViewStreet"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -117,14 +129,14 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextView3"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextViewCityStateZip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextView1" />
+        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextViewTitle" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView3"
+        android:id="@+id/contactContInfoTextViewCityStateZip"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -132,14 +144,14 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextView4"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextViewPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextViewStreet" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView4"
+        android:id="@+id/contactContInfoTextViewPhone"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -147,14 +159,14 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextView5"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextViewEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextView3" />
+        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextViewCityStateZip" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView5"
+        android:id="@+id/contactContInfoTextViewEmail"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -162,44 +174,28 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextView6"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextViewTwitter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextView4" />
+        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextViewPhone" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView6"
+        android:id="@+id/contactContInfoTextViewTwitter"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactContInfoTextView7"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactInternTextViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextView5" />
+        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextViewEmail" />
 
     <TextView
-        android:id="@+id/contactContInfoTextView7"
-        android:layout_width="359dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactInternTextView1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactContInfoTextView6" />
-
-    <TextView
-        android:id="@+id/contactInternTextView1"
+        android:id="@+id/contactInternTextViewTitle"
         android:layout_width="359dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
@@ -208,25 +204,25 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Intern"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactInternTextView2"
+        app:layout_constraintBottom_toTopOf="@+id/contactInternTextViewName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/contactInternTextView2"
+        android:id="@+id/contactInternTextViewName"
         android:layout_width="359dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactCommitteeTextView1"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactCommitteeTextViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/contactCommitteeTextView1"
+        android:id="@+id/contactCommitteeTextViewTitle"
         android:layout_width="359dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
@@ -235,38 +231,38 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Committees"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactCommitteeTextView2"
+        app:layout_constraintBottom_toTopOf="@+id/contactCommitteeTextViewCommittee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/contactCommitteeTextView2"
+        android:id="@+id/contactCommitteeTextViewCommittee"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactCommitteeTextView3"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactCommitteeTextViewCommittee2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/contactCommitteeTextView3"
+        android:id="@+id/contactCommitteeTextViewCommittee2"
         android:layout_width="359dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/contactEduTextView1"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/contactEduTextViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/contactEduTextView1"
+        android:id="@+id/contactEduTextViewTitle"
         android:layout_width="359dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
@@ -275,22 +271,24 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Education"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/contactEduTextView2"
+        app:layout_constraintBottom_toTopOf="@+id/contactEduTextViewDegreeMajorSchool"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Education" />
 
     <TextView
-        android:id="@+id/contactEduTextView2"
+        android:id="@+id/contactEduTextViewDegreeMajorSchool"
         android:layout_width="359dp"
         android:layout_height="26dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="50dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </android.support.constraint.ConstraintLayout>
