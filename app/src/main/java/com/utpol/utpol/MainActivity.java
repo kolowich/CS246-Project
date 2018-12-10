@@ -220,8 +220,7 @@ MainActivity extends AppCompatActivity {
 
             //Display the specific Detail screen that is needed.
             if(contactDetail != null) {
-                // TODO Add the database call here to get the details for the particular contact. The contactDetail should have the basic details.
-
+                contactDetail.pullAdditionalDetail();
                 showScreen(contact_detail1_overlay);
 
                 if(contactDetail.getFirstName() != null && contactDetail.getLastName() != null){
@@ -273,16 +272,14 @@ MainActivity extends AppCompatActivity {
             }
 
             if(billDetail != null) {
-                // TODO Add the database call here to get the details for the particular bill. The billDetail should have the basic details.
-
+                billDetail.pullAdditionalDetail();
                 showScreen(bill_detail1_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
 
             if(committeeDetail != null) {
-                // TODO Add the database call here to get the details for the particular committee. The committeeDetail should have the basic details.
-
+                committeeDetail.pullAdditionalDetail();
                 showScreen(committee_detail_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
