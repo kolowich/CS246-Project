@@ -34,6 +34,8 @@ MainActivity extends AppCompatActivity {
     private static ConstraintLayout bill_directory_overlay = null;
     private static ConstraintLayout committee_directory_overlay = null;
     private static ConstraintLayout contact_detail1_overlay = null;
+    private static ConstraintLayout bill_detail1_overlay = null;
+    private static ConstraintLayout committee_detail_overlay = null;
     private ListView contactListView = null;
     private ListView billListView = null;
     private ListView committeeListView = null;
@@ -76,6 +78,8 @@ MainActivity extends AppCompatActivity {
         bill_directory_overlay = findViewById(R.id.bill_directory_overlay);
         committee_directory_overlay = findViewById(R.id.committee_directory_overlay);
         contact_detail1_overlay = findViewById(R.id.contact_detail1_overlay);
+        bill_detail1_overlay = findViewById(R.id.bill_detail1_overlay);
+        committee_detail_overlay = findViewById(R.id.committee_detail_overlay);
         contactListView = findViewById(R.id.contactListView);
         billListView = findViewById(R.id.billListView);
         committeeListView = findViewById(R.id.committeeListView);
@@ -175,6 +179,8 @@ MainActivity extends AppCompatActivity {
         bill_directory_overlay.animate().x(bill_directory_overlay.getWidth()).setDuration(animationDuration);
         committee_directory_overlay.animate().x(committee_directory_overlay.getWidth()).setDuration(animationDuration);
         contact_detail1_overlay.animate().x(contact_detail1_overlay.getWidth()).setDuration(animationDuration);
+        bill_detail1_overlay.animate().x(bill_detail1_overlay.getWidth()).setDuration(animationDuration);
+        committee_detail_overlay.animate().x(committee_detail_overlay.getWidth()).setDuration(animationDuration);
 
 
         navigationView.animate().x(0).setDuration(animationDuration);
@@ -269,7 +275,7 @@ MainActivity extends AppCompatActivity {
             if(billDetail != null) {
                 // TODO Add the database call here to get the details for the particular bill. The billDetail should have the basic details.
 
-                //showScreen(bill_detail1_overlay);
+                showScreen(bill_detail1_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
@@ -277,7 +283,7 @@ MainActivity extends AppCompatActivity {
             if(committeeDetail != null) {
                 // TODO Add the database call here to get the details for the particular committee. The committeeDetail should have the basic details.
 
-                //showScreen(committee_detail_overlay);
+                showScreen(committee_detail_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
