@@ -52,6 +52,12 @@ MainActivity extends AppCompatActivity {
     private TextView contactInternTextViewName = null;
     private TextView contactCommitteeTextViewCommittee = null;
     private TextView contactEduTextViewDegreeMajorSchool = null;
+    private TextView homeTextViewDate = null;
+    private TextView homeTextViewLocation = null;
+    private TextView homeTextViewMessage1 = null;
+    private TextView homeTextViewMessage2 = null;
+    private TextView homeTextViewTipofDay = null;
+    private TextView homeTextViewMessage3 = null;
 
 
 
@@ -96,6 +102,12 @@ MainActivity extends AppCompatActivity {
         contactInternTextViewName = findViewById(R.id.contactInternTextViewName);
         contactCommitteeTextViewCommittee = findViewById(R.id.contactCommitteeTextViewCommittee);
         contactEduTextViewDegreeMajorSchool = findViewById(R.id.contactEduTextViewDegreeMajorSchool);
+        homeTextViewDate = findViewById(R.id.homeTextViewDate);
+        homeTextViewLocation = findViewById(R.id.homeTextViewLocation);
+        homeTextViewMessage1 = findViewById(R.id.homeTextViewMessage1);
+        homeTextViewMessage2 = findViewById(R.id.homeTextViewMessage2);
+        homeTextViewTipofDay = findViewById(R.id.homeTextViewTipofDay);
+        homeTextViewMessage3 = findViewById(R.id.homeTextViewMessage3);
 
         //get the size of the screen/window
         Display display = getWindowManager().getDefaultDisplay();
@@ -288,9 +300,26 @@ MainActivity extends AppCompatActivity {
     };
 
     public void homeClick(View view) {
-        // TODO Get the messages and other pieces needed for home screen display
+        home.pullHomeScreenInfo();
         showScreen(home_overlay);
-
+        homeTextViewDate.setText("Day " + home.getDate());
+        if(home.getLocation() != null) {
+            homeTextViewLocation.setText(home.getLocation());
+        }
+        homeTextViewTipofDay.setText("");
+        if(home.getMessages() != null) {
+            for (String message : home.getMessages()) {
+                if (home.getMessages().indexOf(message) == 0) {
+                    homeTextViewMessage1.setText(contactDetail.getGovInfo().getLeadPos());
+                }
+                if (home.getMessages().indexOf(message) == 1) {
+                    homeTextViewMessage2.setText(contactDetail.getGovInfo().getLeadPos());
+                }
+                if (home.getMessages().indexOf(message) == 2) {
+                    homeTextViewMessage3.setText(contactDetail.getGovInfo().getLeadPos());
+                }
+            }
+        }
     }
 
     public void contactsClick(View view) {
