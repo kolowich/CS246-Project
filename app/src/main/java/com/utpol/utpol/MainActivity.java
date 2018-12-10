@@ -291,8 +291,9 @@ MainActivity extends AppCompatActivity {
     }
 
     public void contactsClick(View view) {
-        listContactDetail.pullList();
-
+        if(listContactDetail.getDetails().isEmpty()) {
+            listContactDetail.pullList();
+        }
         ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail.getDetails());
         contactListView.setAdapter(customAdapter);
         showScreen(contact_directory_overlay);
@@ -300,8 +301,9 @@ MainActivity extends AppCompatActivity {
     }
 
     public void billsClick(View view) {
-        // TODO Get the list of bills from the database and place them in the listBillDetail list
-
+        if(listBillDetail.getDetails().isEmpty()) {
+            // TODO Get the list of bills from the database and place them in the listBillDetail list
+        }
         ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail.getDetails());
         billListView.setAdapter(customAdapter);
         showScreen(bill_directory_overlay);
@@ -309,8 +311,9 @@ MainActivity extends AppCompatActivity {
     }
 
     public void committeeClick(View view) {
-        // TODO Get the list of committees from the database and place them in the listCommitteeDetail list
-
+        if(listCommitteeDetail.getDetails().isEmpty()) {
+            // TODO Get the list of committees from the database and place them in the listCommitteeDetail list
+        }
         ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail.getDetails());
         committeeListView.setAdapter(customAdapter);
         showScreen(committee_directory_overlay);
