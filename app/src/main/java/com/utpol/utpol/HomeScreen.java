@@ -45,10 +45,6 @@ public class HomeScreen extends ConstraintLayout {
         bills = new BillList();
         contacts = new ContactList();
         committees = new CommitteeList();
-
-        bills.pullList();
-        contacts.pullList();
-        committees.pullList();
     }
 
 
