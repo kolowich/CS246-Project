@@ -36,9 +36,9 @@ MainActivity extends AppCompatActivity {
     private ListView contactListView = null;
     private ListView billListView = null;
     private ListView committeeListView = null;
-    List<ContactDetail> listContactDetail = new ArrayList<>();
-    List<BillDetail> listBillDetail = new ArrayList<>();
-    List<CommitteeDetail> listCommitteeDetail = new ArrayList<>();
+    private ContactList listContactDetail = new ContactList();
+    private BillList listBillDetail = new BillList();
+    private CommitteeList listCommitteeDetail = new CommitteeList();
     private ContactDetail contactDetail;
     private BillDetail billDetail;
     private CommitteeDetail committeeDetail;
@@ -164,18 +164,18 @@ MainActivity extends AppCompatActivity {
             String ItemName = intent.getStringExtra("text");
 
             // Figure out if the ItemName is a ContactDetail, BillDetail, or CommitteeDetail.
-            for (ContactDetail contact: listContactDetail){
+            for (ContactDetail contact: listContactDetail.getDetails()){
                 if(ItemName.contains(contact.getFirstName()) && ItemName.contains(contact.getLastName()) && ItemName.contains(contact.getPhoneNumber())){
                     contactDetail = contact;
                 }
             }
-            for (BillDetail bill: listBillDetail){
+            for (BillDetail bill: listBillDetail.getDetails()){
                 if(ItemName.contains(bill.getName()) && ItemName.contains(bill.getCommittee().getNameCommittee())){
                     billDetail = bill;
                 }
             }
             if(billDetail == null) {
-                for (CommitteeDetail committee : listCommitteeDetail) {
+                for (CommitteeDetail committee : listCommitteeDetail.getDetails()) {
                     if (ItemName.contains(committee.getNameCommittee())) {
                         committeeDetail = committee;
                     }
@@ -217,9 +217,9 @@ MainActivity extends AppCompatActivity {
     }
 
     public void contactsClick(View view) {
-        // TODO Get the list of contacts from the database and place them in the listContactDetail list
+        listContactDetail.pullList();
 
-        ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail);
+        ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail.getDetails());
         contactListView.setAdapter(customAdapter);
         showScreen(contact_directory_overlay);
         contactListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
@@ -228,7 +228,7 @@ MainActivity extends AppCompatActivity {
     public void billsClick(View view) {
         // TODO Get the list of bills from the database and place them in the listBillDetail list
 
-        ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail);
+        ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail.getDetails());
         billListView.setAdapter(customAdapter);
         showScreen(bill_directory_overlay);
         billListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
@@ -237,7 +237,7 @@ MainActivity extends AppCompatActivity {
     public void committeeClick(View view) {
         // TODO Get the list of committees from the database and place them in the listCommitteeDetail list
 
-        ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail);
+        ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail.getDetails());
         committeeListView.setAdapter(customAdapter);
         showScreen(committee_directory_overlay);
         committeeListView.setOnItemClickListener(new OnItemClickListenerListViewItem());

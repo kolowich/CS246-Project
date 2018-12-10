@@ -7,6 +7,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +16,11 @@ public class ContactList extends Activity implements ListView {
     private static List<ContactDetail> details;
 
     public ContactList(){
+        details = new ArrayList<>();
     }
 
     public void pullList(){
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("person");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
         query.selectKeys(Arrays.asList("First","Last","Phone"));
 
         query.findInBackground(new FindCallback<ParseObject> () {
@@ -38,7 +40,7 @@ public class ContactList extends Activity implements ListView {
             }
         });
     }
-
+    
     public static void addContact(String first, String last, String number) {
         details.add(new ContactDetail(first, last, number));
         System.out.println(first);
