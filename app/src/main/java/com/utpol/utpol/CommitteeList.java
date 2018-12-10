@@ -15,10 +15,6 @@ public class CommitteeList implements ListView {
 
     }
 
-    public void openDetail(){
-
-    }
-
     public List<CommitteeDetail> getDetails() {
         return details;
     }

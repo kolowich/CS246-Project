@@ -15,10 +15,6 @@ public class BillList implements ListView {
 
     }
 
-    public void openDetail(){
-
-    }
-
     public List<BillDetail> getDetails() {
         return details;
     }
