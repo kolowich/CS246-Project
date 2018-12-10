@@ -46,11 +46,6 @@ public class ContactList extends Activity implements ListView {
         System.out.println(first);
     }
 
-
-    public void openDetail(){
-
-    }
-
     public List<ContactDetail> getDetails() {
         return details;
     }

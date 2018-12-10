@@ -34,6 +34,8 @@ MainActivity extends AppCompatActivity {
     private static ConstraintLayout bill_directory_overlay = null;
     private static ConstraintLayout committee_directory_overlay = null;
     private static ConstraintLayout contact_detail1_overlay = null;
+    private static ConstraintLayout bill_detail1_overlay = null;
+    private static ConstraintLayout committee_detail_overlay = null;
     private ListView contactListView = null;
     private ListView billListView = null;
     private ListView committeeListView = null;
@@ -76,6 +78,8 @@ MainActivity extends AppCompatActivity {
         bill_directory_overlay = findViewById(R.id.bill_directory_overlay);
         committee_directory_overlay = findViewById(R.id.committee_directory_overlay);
         contact_detail1_overlay = findViewById(R.id.contact_detail1_overlay);
+        bill_detail1_overlay = findViewById(R.id.bill_detail1_overlay);
+        committee_detail_overlay = findViewById(R.id.committee_detail_overlay);
         contactListView = findViewById(R.id.contactListView);
         billListView = findViewById(R.id.billListView);
         committeeListView = findViewById(R.id.committeeListView);
@@ -175,6 +179,8 @@ MainActivity extends AppCompatActivity {
         bill_directory_overlay.animate().x(bill_directory_overlay.getWidth()).setDuration(animationDuration);
         committee_directory_overlay.animate().x(committee_directory_overlay.getWidth()).setDuration(animationDuration);
         contact_detail1_overlay.animate().x(contact_detail1_overlay.getWidth()).setDuration(animationDuration);
+        bill_detail1_overlay.animate().x(bill_detail1_overlay.getWidth()).setDuration(animationDuration);
+        committee_detail_overlay.animate().x(committee_detail_overlay.getWidth()).setDuration(animationDuration);
 
 
         navigationView.animate().x(0).setDuration(animationDuration);
@@ -214,8 +220,7 @@ MainActivity extends AppCompatActivity {
 
             //Display the specific Detail screen that is needed.
             if(contactDetail != null) {
-                // TODO Add the database call here to get the details for the particular contact. The contactDetail should have the basic details.
-
+                contactDetail.pullAdditionalDetail();
                 showScreen(contact_detail1_overlay);
 
                 if(contactDetail.getFirstName() != null && contactDetail.getLastName() != null){
@@ -267,17 +272,15 @@ MainActivity extends AppCompatActivity {
             }
 
             if(billDetail != null) {
-                // TODO Add the database call here to get the details for the particular bill. The billDetail should have the basic details.
-
-                //showScreen(bill_detail1_overlay);
+                billDetail.pullAdditionalDetail();
+                showScreen(bill_detail1_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
 
             if(committeeDetail != null) {
-                // TODO Add the database call here to get the details for the particular committee. The committeeDetail should have the basic details.
-
-                //showScreen(committee_detail_overlay);
+                committeeDetail.pullAdditionalDetail();
+                showScreen(committee_detail_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
@@ -302,7 +305,7 @@ MainActivity extends AppCompatActivity {
 
     public void billsClick(View view) {
         if(listBillDetail.getDetails().isEmpty()) {
-            // TODO Get the list of bills from the database and place them in the listBillDetail list
+            listBillDetail.pullList();
         }
         ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail.getDetails());
         billListView.setAdapter(customAdapter);
@@ -312,7 +315,7 @@ MainActivity extends AppCompatActivity {
 
     public void committeeClick(View view) {
         if(listCommitteeDetail.getDetails().isEmpty()) {
-            // TODO Get the list of committees from the database and place them in the listCommitteeDetail list
+            listCommitteeDetail.pullList();
         }
         ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail.getDetails());
         committeeListView.setAdapter(customAdapter);
