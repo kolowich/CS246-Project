@@ -57,8 +57,8 @@ MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_overlay);
         contact_directory_overlay = findViewById(R.id.contact_directory_overlay);
         bill_directory_overlay = findViewById(R.id.bill_directory_overlay);
-        committee_directory_overlay = findViewById(R.id.bill_directory_overlay);
-        contact_detail1_overlay = findViewById(R.id.bill_directory_overlay);
+        committee_directory_overlay = findViewById(R.id.committee_directory_overlay);
+        contact_detail1_overlay = findViewById(R.id.contact_detail1_overlay);
         contactListView = findViewById(R.id.contactListView);
         billListView = findViewById(R.id.billListView);
         committeeListView = findViewById(R.id.committeeListView);
