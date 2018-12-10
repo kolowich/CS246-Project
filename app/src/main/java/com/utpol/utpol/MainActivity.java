@@ -1,23 +1,19 @@
 package com.utpol.utpol;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.parse.Parse;
-import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +26,16 @@ MainActivity extends AppCompatActivity {
     private static final boolean PROTOTYPE = false;
     //private SharedPreferences sharedPreferences = this.getSharedPreferences("utpol", MODE_PRIVATE);
     private static long animationDuration = 1;
-    private static ConstraintLayout homeView = null;
+    private static ConstraintLayout home_overlay = null;
     private static ConstraintLayout loginView = null;
     private static ConstraintLayout navigationView = null;
     private static ConstraintLayout contact_directory_overlay = null;
     private static ConstraintLayout bill_directory_overlay = null;
     private static ConstraintLayout committee_directory_overlay = null;
+    private static ConstraintLayout contact_detail1_overlay = null;
+    private ListView contactListView = null;
+    private ListView billListView = null;
+    private ListView committeeListView = null;
     List<ContactDetail> listContactDetail = new ArrayList<>();
     List<BillDetail> listBillDetail = new ArrayList<>();
     List<CommitteeDetail> listCommitteeDetail = new ArrayList<>();
@@ -52,13 +52,16 @@ MainActivity extends AppCompatActivity {
         //String location = sharedPreferences.getString(HomeScreen.LOCATION, "Unknown Location");
         //create the HomeScreen View
         home = new HomeScreen(this, null);
-        homeView = findViewById(R.id.home_overlay);
+        home_overlay = findViewById(R.id.home_overlay);
         loginView = findViewById(R.id.login_overlay);
         navigationView = findViewById(R.id.navigation_overlay);
         contact_directory_overlay = findViewById(R.id.contact_directory_overlay);
         bill_directory_overlay = findViewById(R.id.bill_directory_overlay);
         committee_directory_overlay = findViewById(R.id.bill_directory_overlay);
-
+        contact_detail1_overlay = findViewById(R.id.bill_directory_overlay);
+        contactListView = findViewById(R.id.contactListView);
+        billListView = findViewById(R.id.billListView);
+        committeeListView = findViewById(R.id.committeeListView);
 
         //get the size of the screen/window
         Display display = getWindowManager().getDefaultDisplay();
@@ -66,12 +69,13 @@ MainActivity extends AppCompatActivity {
         display.getSize(size);
 
         //translate the forest_overlay off screen without animation before anyone can see it
-        homeView.setX(size.x);
+        home_overlay.setX(size.x);
         navigationView.setX(size.x);
         loginView.setX(new Point(0,0).x);
         contact_directory_overlay.setX(size.x);
         bill_directory_overlay.setX(size.x);
         committee_directory_overlay.setX(size.x);
+        contact_detail1_overlay.setX(size.x);
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
@@ -92,8 +96,7 @@ MainActivity extends AppCompatActivity {
 
         if(PROTOTYPE) {
             loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
-            homeView.animate().x(0).setDuration(animationDuration);
-            navigationView.animate().x(0).setDuration(animationDuration);
+            showScreen(home_overlay);
         }
         else {
             login.setUsername(userName); //put the editText's string here
@@ -110,7 +113,7 @@ MainActivity extends AppCompatActivity {
         if(login != null && home != null) {
             if (login.isValidated()) {
                 loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
-                homeView.animate().x(0).setDuration(animationDuration);
+                home_overlay.animate().x(0).setDuration(animationDuration);
                 navigationView.animate().x(0).setDuration(animationDuration);
             } else {
                 Toast toast = Toast.makeText(home.getContext(),"Username or Password are incorrect", (int) 1000);
@@ -136,12 +139,12 @@ MainActivity extends AppCompatActivity {
 
 
     public void showScreen(ConstraintLayout overlay){
-        homeView.animate().x(homeView.getWidth()).setDuration(animationDuration);
+        home_overlay.animate().x(home_overlay.getWidth()).setDuration(animationDuration);
         loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
         contact_directory_overlay.animate().x(contact_directory_overlay.getWidth()).setDuration(animationDuration);
         bill_directory_overlay.animate().x(bill_directory_overlay.getWidth()).setDuration(animationDuration);
         committee_directory_overlay.animate().x(committee_directory_overlay.getWidth()).setDuration(animationDuration);
-
+        contact_detail1_overlay.animate().x(contact_detail1_overlay.getWidth()).setDuration(animationDuration);
 
 
         navigationView.animate().x(0).setDuration(animationDuration);
@@ -183,7 +186,7 @@ MainActivity extends AppCompatActivity {
             if(contactDetail != null) {
                 // TODO Add the database call here to get the details for the particular contact. The contactDetail should have the basic details.
 
-                showScreen(contact_directory_overlay);
+                showScreen(contact_detail1_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
 
@@ -192,7 +195,7 @@ MainActivity extends AppCompatActivity {
             if(billDetail != null) {
                 // TODO Add the database call here to get the details for the particular bill. The billDetail should have the basic details.
 
-                showScreen(bill_directory_overlay);
+                //showScreen(bill_detail1_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
@@ -200,12 +203,45 @@ MainActivity extends AppCompatActivity {
             if(committeeDetail != null) {
                 // TODO Add the database call here to get the details for the particular committee. The committeeDetail should have the basic details.
 
-                showScreen(committee_directory_overlay);
+                //showScreen(committee_detail_overlay);
 
                 // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
         }
     };
+
+    public void homeClick(View view) {
+        // TODO Get the messages and other pieces needed for home screen display
+        showScreen(home_overlay);
+
+    }
+
+    public void contactsClick(View view) {
+        // TODO Get the list of contacts from the database and place them in the listContactDetail list
+
+        ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail);
+        contactListView.setAdapter(customAdapter);
+        showScreen(contact_directory_overlay);
+        contactListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
+    }
+
+    public void billsClick(View view) {
+        // TODO Get the list of bills from the database and place them in the listBillDetail list
+
+        ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail);
+        billListView.setAdapter(customAdapter);
+        showScreen(bill_directory_overlay);
+        billListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
+    }
+
+    public void committeeClick(View view) {
+        // TODO Get the list of committees from the database and place them in the listCommitteeDetail list
+
+        ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail);
+        committeeListView.setAdapter(customAdapter);
+        showScreen(committee_directory_overlay);
+        committeeListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
+    }
 
     /*
     public SharedPreferences getSharedPreferencesObject() {

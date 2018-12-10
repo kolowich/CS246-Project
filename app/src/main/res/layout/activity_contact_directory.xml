@@ -27,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/contactListView"
         android:layout_width="375dp"
         android:layout_height="451dp"
         android:layout_marginStart="1dp"
