@@ -7,6 +7,11 @@ public class BillList implements ListView {
     private List<BillDetail> details;
 
     public BillList(){
+
+    }
+
+    public static void addBill() {
+
     }
 
     public void pullList(){
