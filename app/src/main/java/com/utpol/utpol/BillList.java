@@ -12,7 +12,7 @@ public class BillList implements ListView {
     }
 
     public void pullList(){
-
+        // TODO Get the list of bills from the database and place them in the details
     }
 
     public List<BillDetail> getDetails() {

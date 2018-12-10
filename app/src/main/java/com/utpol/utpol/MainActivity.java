@@ -308,7 +308,7 @@ MainActivity extends AppCompatActivity {
 
     public void billsClick(View view) {
         if(listBillDetail.getDetails().isEmpty()) {
-            // TODO Get the list of bills from the database and place them in the listBillDetail list
+            listBillDetail.pullList();
         }
         ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail.getDetails());
         billListView.setAdapter(customAdapter);
@@ -318,7 +318,7 @@ MainActivity extends AppCompatActivity {
 
     public void committeeClick(View view) {
         if(listCommitteeDetail.getDetails().isEmpty()) {
-            // TODO Get the list of committees from the database and place them in the listCommitteeDetail list
+            listCommitteeDetail.pullList();
         }
         ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail.getDetails());
         committeeListView.setAdapter(customAdapter);

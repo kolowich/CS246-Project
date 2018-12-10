@@ -12,7 +12,7 @@ public class CommitteeList implements ListView {
     }
 
     public void pullList(){
-
+        // TODO Get the list of committees from the database and place them in the details
     }
 
     public List<CommitteeDetail> getDetails() {
