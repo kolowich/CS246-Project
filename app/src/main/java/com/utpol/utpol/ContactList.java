@@ -22,7 +22,7 @@ public class ContactList extends Activity implements ListView {
 
     public void pullList(android.widget.ListView listView){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-        query.selectKeys(Arrays.asList("First","Last","Phone"));
+        query.selectKeys(Arrays.asList("objectId","First","Last","Phone")).setLimit(500);
 
         query.findInBackground(new FindCallback<ParseObject> () {
             @Override
@@ -31,7 +31,7 @@ public class ContactList extends Activity implements ListView {
                     if (objects != null) {
                         for (ParseObject object : objects) {
                             runOnUiThread(() -> {
-                                addContact(object.getString("First"), object.getString("Last"), object.getString("Phone"));
+                                addContact(object.getString("objectId"), object.getString("First"), object.getString("Last"), object.getString("Phone"));
                                 ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
                             });
                         }
@@ -43,8 +43,47 @@ public class ContactList extends Activity implements ListView {
         });
     }
 
-    public static void addContact(String first, String last, String number) {
-        details.add(new ContactDetail(first, last, number));
+    public static void addContact(String objectId, String first, String last, String number) {
+        boolean exists = false;
+
+        for(ContactDetail current: details) {
+
+            boolean isFirst = false;
+            boolean isLast = false;
+            boolean isPhone = false;
+
+            if (current.getFirstName() != null) {
+                if (current.getFirstName().equals(first)) {
+                    isFirst = true;
+                }
+            } else if (first == null) {
+                isFirst = true;
+            }
+
+            if (current.getLastName() != null) {
+                if (current.getLastName().equals(last)) {
+                    isLast = true;
+                }
+            } else if (last == null) {
+                isLast = true;
+            }
+
+            if (current.getPhoneNumber() != null) {
+                if (current.getPhoneNumber().equals(number)) {
+                    isPhone = true;
+                }
+            } else if (number == null) {
+                isPhone = true;
+            }
+
+            if (isFirst && isLast && isPhone) {
+                exists = true;
+            }
+        }
+        if(!exists) {
+            details.add(new ContactDetail(objectId, first, last, number));
+        }
+
     }
 
     public List<ContactDetail> getDetails() {

@@ -8,17 +8,19 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class ContactDetail extends Activity implements DetailView {
-
+    
+    private String objectID;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String homeTown;
-    private List<String> education;
+    private List<String> education = new ArrayList<>();
     private Address address;
     private Electronic eContact;
     private GovInfo govInfo;
@@ -26,14 +28,17 @@ public class ContactDetail extends Activity implements DetailView {
     public ContactDetail(){
     }
 
-    public ContactDetail(String first, String last, String phone) {
+    public ContactDetail(String id, String first, String last, String phone) {
+        objectID = id;
         firstName = first;
         lastName = last;
         phoneNumber = phone;
     }
 
     public void pullAdditionalDetail(){
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person").whereEqualTo("First", firstName).whereEqualTo("Last",lastName);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Person").whereEqualTo("objectId", objectID);
+
+        updated = false;
 
         query.findInBackground((objects, e) -> {
             if (e == null) {
@@ -51,8 +56,8 @@ public class ContactDetail extends Activity implements DetailView {
     }
 
     public void addDetails(ParseObject in) {
-        if(in.getString("Education") != null) {
-            education.add(in.getString("Education"));
+        if(in.getString("Background") != null) {
+            education.add(in.getString("Background"));
         }
         if(in.getString("City") != null) {
             homeTown = in.getString("City");
@@ -148,5 +153,13 @@ public class ContactDetail extends Activity implements DetailView {
             string = this.firstName + " " + this.lastName + "\n" + this.phoneNumber;
         }
         return string;
+    }
+
+    public String getObjectID() {
+        return objectID;
+    }
+
+    public void setObjectID(String objectID) {
+        this.objectID = objectID;
     }
 }

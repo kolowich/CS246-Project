@@ -17,6 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
 
 public class
 MainActivity extends AppCompatActivity {
@@ -219,7 +222,7 @@ MainActivity extends AppCompatActivity {
 
             // Figure out if the ItemName is a ContactDetail, BillDetail, or CommitteeDetail.
             for (ContactDetail contact: listContactDetail.getDetails()){
-                if(ItemName.contains(contact.getFirstName()) && ItemName.contains(contact.getLastName()) && ItemName.contains(contact.getPhoneNumber())){
+                if(ItemName.contains(contact.getFirstName()) && ItemName.contains(contact.getLastName())) {
                     contactDetail = contact;
                 }
             }
@@ -239,7 +242,6 @@ MainActivity extends AppCompatActivity {
             //Display the specific Detail screen that is needed.
             if(contactDetail != null) {
                 contactDetail.pullAdditionalDetail();
-                showScreen(contact_detail1_overlay);
 
                 if(contactDetail.getFirstName() != null && contactDetail.getLastName() != null){
                     contactNameTextViewName.setText(contactDetail.getFirstName() + " " + contactDetail.getLastName());
@@ -287,6 +289,7 @@ MainActivity extends AppCompatActivity {
                     }
                 }
 
+                showScreen(contact_detail1_overlay);
             }
 
             if(billDetail != null) {
@@ -330,6 +333,7 @@ MainActivity extends AppCompatActivity {
 
     public void contactsClick(View view) {
         listContactDetail.pullList(contactListView);
+
         ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail.getDetails());
         contactListView.setAdapter(customAdapter);
         showScreen(contact_directory_overlay);
