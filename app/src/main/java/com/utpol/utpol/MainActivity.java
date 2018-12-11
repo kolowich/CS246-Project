@@ -122,8 +122,9 @@ MainActivity extends AppCompatActivity {
         bill_directory_overlay.setX(size.x);
         committee_directory_overlay.setX(size.x);
         contact_detail1_overlay.setX(size.x);
-        bill_directory_overlay.setX(size.x);
-        committee_directory_overlay.setX(size.x);
+        bill_detail1_overlay.setX(size.x);
+        committee_detail_overlay.setX(size.x);
+
 
         //initialize the database's information so that we can contact it easily later
         Parse.initialize(new Parse.Configuration.Builder(this)
