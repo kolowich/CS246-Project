@@ -1,6 +1,7 @@
 package com.utpol.utpol;
 
 import android.app.Activity;
+import android.widget.BaseAdapter;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -50,9 +51,29 @@ public class ContactDetail extends Activity implements DetailView {
     }
 
     public void addDetails(ParseObject in) {
-        education.add(in.getString("Education"));
-        homeTown = in.getString("City");
-        address = new Address(in.getString("Street"),in.getString("City"),in.getString("State"),in.getString("Zip"));
+        if(in.getString("Education") != null) {
+            education.add(in.getString("Education"));
+        }
+        if(in.getString("City") != null) {
+            homeTown = in.getString("City");
+        }
+        if(in.getString("Street") != null && in.getString("City") != null && in.getString("State") != null && in.getString("Zip") != null) {
+            address = new Address(in.getString("Street"), in.getString("City"), in.getString("State"), in.getString("Zip"));
+        } else {
+            address = new Address();
+            if(in.getString("Street") != null){
+                address.setStreet(in.getString("Street"));
+            }
+            if(in.getString("City") != null){
+                address.setCity(in.getString("City"));
+            }
+            if(in.getString("State") != null){
+                address.setState(in.getString("State"));
+            }
+            if(in.getString("Zip") != null){
+                address.setZip(in.getString("Zip"));
+            }
+        }
     }
 
     public String getFirstName() {

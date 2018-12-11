@@ -1,6 +1,7 @@
 package com.utpol.utpol;
 
 import android.app.Activity;
+import android.widget.BaseAdapter;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -19,7 +20,7 @@ public class ContactList extends Activity implements ListView {
         details = new ArrayList<>();
     }
 
-    public void pullList(){
+    public void pullList(android.widget.ListView listView){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
         query.selectKeys(Arrays.asList("First","Last","Phone"));
 
@@ -31,6 +32,7 @@ public class ContactList extends Activity implements ListView {
                         for (ParseObject object : objects) {
                             runOnUiThread(() -> {
                                 addContact(object.getString("First"), object.getString("Last"), object.getString("Phone"));
+                                ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
                             });
                         }
                     }
@@ -43,7 +45,6 @@ public class ContactList extends Activity implements ListView {
 
     public static void addContact(String first, String last, String number) {
         details.add(new ContactDetail(first, last, number));
-        System.out.println(first);
     }
 
     public List<ContactDetail> getDetails() {

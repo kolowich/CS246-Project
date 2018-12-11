@@ -11,7 +11,7 @@ public class CommitteeList implements ListView {
         details = new ArrayList<>();
     }
 
-    public void pullList(){
+    public void pullList(android.widget.ListView listView){
         // TODO Get the list of committees from the database and place them in the details
     }
 

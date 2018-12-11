@@ -3,8 +3,10 @@ package com.utpol.utpol;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Point;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
@@ -16,9 +18,6 @@ import android.widget.Toast;
 
 import com.parse.Parse;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class
 MainActivity extends AppCompatActivity {
 
@@ -29,7 +28,7 @@ MainActivity extends AppCompatActivity {
     private static long animationDuration = 1;
     private static ConstraintLayout home_overlay = null;
     private static ConstraintLayout loginView = null;
-    private static ConstraintLayout navigationView = null;
+    private static ConstraintLayout navigation_overlay = null;
     private static ConstraintLayout contact_directory_overlay = null;
     private static ConstraintLayout bill_directory_overlay = null;
     private static ConstraintLayout committee_directory_overlay = null;
@@ -74,12 +73,15 @@ MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("custom-message"));
+
         //String location = sharedPreferences.getString(HomeScreen.LOCATION, "Unknown Location");
         //create the HomeScreen View
         home = new HomeScreen(this, null);
         home_overlay = findViewById(R.id.home_overlay);
         loginView = findViewById(R.id.login_overlay);
-        navigationView = findViewById(R.id.navigation_overlay);
+        navigation_overlay = findViewById(R.id.navigation_overlay);
         contact_directory_overlay = findViewById(R.id.contact_directory_overlay);
         bill_directory_overlay = findViewById(R.id.bill_directory_overlay);
         committee_directory_overlay = findViewById(R.id.committee_directory_overlay);
@@ -116,7 +118,7 @@ MainActivity extends AppCompatActivity {
 
         //translate the forest_overlay off screen without animation before anyone can see it
         home_overlay.setX(size.x);
-        navigationView.setX(size.x);
+        navigation_overlay.setX(size.x);
         loginView.setX(new Point(0,0).x);
         contact_directory_overlay.setX(size.x);
         bill_directory_overlay.setX(size.x);
@@ -163,7 +165,7 @@ MainActivity extends AppCompatActivity {
             if (login.isValidated()) {
                 loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
                 home_overlay.animate().x(0).setDuration(animationDuration);
-                navigationView.animate().x(0).setDuration(animationDuration);
+                navigation_overlay.animate().x(0).setDuration(animationDuration);
             } else {
                 Toast toast = Toast.makeText(home.getContext(),"Username or Password are incorrect", (int) 1000);
                 toast.show();
@@ -198,8 +200,9 @@ MainActivity extends AppCompatActivity {
         committee_detail_overlay.animate().x(committee_detail_overlay.getWidth()).setDuration(animationDuration);
 
 
-        navigationView.animate().x(0).setDuration(animationDuration);
+
         overlay.animate().x(0).setDuration(animationDuration);
+        navigation_overlay.animate().x(0).setDuration(animationDuration);
     }
 
 
@@ -241,39 +244,39 @@ MainActivity extends AppCompatActivity {
                 if(contactDetail.getFirstName() != null && contactDetail.getLastName() != null){
                     contactNameTextViewName.setText(contactDetail.getFirstName() + " " + contactDetail.getLastName());
                 }
-                if(contactDetail.getGovInfo().getParty() != null){
+                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getParty() != null){
                     contactNameTextViewParty.setText(contactDetail.getGovInfo().getParty());
                 }
-                if(contactDetail.getGovInfo().getDistrictNumber() != null){
+                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getDistrictNumber() != null){
                     contactNameTextViewDistrict.setText("District " + contactDetail.getGovInfo().getDistrictNumber());
                 }
-                if(contactDetail.getGovInfo().getLeadPos() != null){
+                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getLeadPos() != null){
                     contactNameTextViewLeadershipPosition.setText(contactDetail.getGovInfo().getLeadPos());
                 }
-                if(contactDetail.getGovInfo().getLocation() != null){
+                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getLocation() != null){
                     contactLocationTextViewLocation.setText(contactDetail.getGovInfo().getLocation());
                 }
-                if(contactDetail.getAddress().getStreet() != null){
+                if(contactDetail.getAddress() != null && contactDetail.getAddress().getStreet() != null){
                     contactContInfoTextViewStreet.setText(contactDetail.getAddress().getStreet());
                 }
-                if(contactDetail.getAddress().getCity() != null && contactDetail.getAddress().getState() != null && contactDetail.getAddress().getZip() != null){
+                if(contactDetail.getAddress() != null && contactDetail.getAddress().getCity() != null && contactDetail.getAddress().getState() != null && contactDetail.getAddress().getZip() != null){
                     contactContInfoTextViewCityStateZip.setText(contactDetail.getAddress().getCity() + ", " + contactDetail.getAddress().getState() + " " + contactDetail.getAddress().getZip());
                 }
                 if(contactDetail.getPhoneNumber() != null){
                     contactContInfoTextViewPhone.setText(contactDetail.getPhoneNumber());
                 }
-                if(contactDetail.geteContact().getEmail() != null){
+                if(contactDetail.geteContact() != null && contactDetail.geteContact().getEmail() != null){
                     contactContInfoTextViewEmail.setText(contactDetail.geteContact().getEmail());
                 }
-                if(contactDetail.geteContact().getTwitter() != null){
+                if(contactDetail.geteContact() != null && contactDetail.geteContact().getTwitter() != null){
                     contactContInfoTextViewTwitter.setText(contactDetail.geteContact().getTwitter());
                 }
-                if(contactDetail.getGovInfo().getInterns() != null){
+                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getInterns() != null){
                     for(String intern: contactDetail.getGovInfo().getInterns()) {
                         contactInternTextViewName.setText(intern + "\n");
                     }
                 }
-                if(contactDetail.getGovInfo().getCommittees() != null){
+                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getCommittees() != null){
                     for(CommitteeDetail committee: contactDetail.getGovInfo().getCommittees()) {
                         contactCommitteeTextViewCommittee.setText(committee.getNameCommittee() + "\n");
                     }
@@ -326,19 +329,16 @@ MainActivity extends AppCompatActivity {
     }
 
     public void contactsClick(View view) {
-        if(listContactDetail.getDetails().isEmpty()) {
-            listContactDetail.pullList();
-        }
+        listContactDetail.pullList(contactListView);
         ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail.getDetails());
         contactListView.setAdapter(customAdapter);
         showScreen(contact_directory_overlay);
         contactListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
+
     }
 
     public void billsClick(View view) {
-        if(listBillDetail.getDetails().isEmpty()) {
-            listBillDetail.pullList();
-        }
+        listBillDetail.pullList(billListView);
         ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail.getDetails());
         billListView.setAdapter(customAdapter);
         showScreen(bill_directory_overlay);
@@ -346,9 +346,7 @@ MainActivity extends AppCompatActivity {
     }
 
     public void committeeClick(View view) {
-        if(listCommitteeDetail.getDetails().isEmpty()) {
-            listCommitteeDetail.pullList();
-        }
+        listCommitteeDetail.pullList(committeeListView);
         ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail.getDetails());
         committeeListView.setAdapter(customAdapter);
         showScreen(committee_directory_overlay);

@@ -14,6 +14,9 @@ public class Address {
         zip = zipIn;
     }
 
+    public Address() {
+    }
+
     public String fullAddress() {
         String out = new String();
         out.concat(street).concat("\n").concat(city).concat(", ").concat(state).concat(" ").concat(zip);

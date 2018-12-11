@@ -14,7 +14,7 @@ public class BillList implements ListView {
     public static void addBill() {
     }
 
-    public void pullList(){
+    public void pullList(android.widget.ListView listView){
         // TODO Get the list of bills from the database and place them in the details
     }
 
