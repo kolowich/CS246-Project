@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ContactDetail extends Activity implements DetailView {
-    
+
     private String objectID;
     private String firstName;
     private String lastName;
@@ -37,8 +37,6 @@ public class ContactDetail extends Activity implements DetailView {
 
     public void pullAdditionalDetail(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person").whereEqualTo("objectId", objectID);
-
-        updated = false;
 
         query.findInBackground((objects, e) -> {
             if (e == null) {
