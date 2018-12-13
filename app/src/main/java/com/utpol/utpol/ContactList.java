@@ -22,7 +22,7 @@ public class ContactList extends Activity implements ListView {
 
     public void pullList(android.widget.ListView listView){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
-        query.selectKeys(Arrays.asList("objectId","First","Last","Phone")).setLimit(500);
+        query.selectKeys(Arrays.asList("First","Last","Phone")).setLimit(500);
 
         query.findInBackground(new FindCallback<ParseObject> () {
             @Override
@@ -31,7 +31,7 @@ public class ContactList extends Activity implements ListView {
                     if (objects != null) {
                         for (ParseObject object : objects) {
                             runOnUiThread(() -> {
-                                addContact(object.getString("objectId"), object.getString("First"), object.getString("Last"), object.getString("Phone"));
+                                addContact(object.getObjectId(), object.getString("First"), object.getString("Last"), object.getString("Phone"));
                                 ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
                             });
                         }
