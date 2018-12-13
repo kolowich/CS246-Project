@@ -241,54 +241,7 @@ MainActivity extends AppCompatActivity {
 
             //Display the specific Detail screen that is needed.
             if(contactDetail != null) {
-                contactDetail.pullAdditionalDetail();
-
-                if(contactDetail.getFirstName() != null && contactDetail.getLastName() != null){
-                    contactNameTextViewName.setText(contactDetail.getFirstName() + " " + contactDetail.getLastName());
-                }
-                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getParty() != null){
-                    contactNameTextViewParty.setText(contactDetail.getGovInfo().getParty());
-                }
-                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getDistrictNumber() != null){
-                    contactNameTextViewDistrict.setText("District " + contactDetail.getGovInfo().getDistrictNumber());
-                }
-                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getLeadPos() != null){
-                    contactNameTextViewLeadershipPosition.setText(contactDetail.getGovInfo().getLeadPos());
-                }
-                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getLocation() != null){
-                    contactLocationTextViewLocation.setText(contactDetail.getGovInfo().getLocation());
-                }
-                if(contactDetail.getAddress() != null && contactDetail.getAddress().getStreet() != null){
-                    contactContInfoTextViewStreet.setText(contactDetail.getAddress().getStreet());
-                }
-                if(contactDetail.getAddress() != null && contactDetail.getAddress().getCity() != null && contactDetail.getAddress().getState() != null && contactDetail.getAddress().getZip() != null){
-                    contactContInfoTextViewCityStateZip.setText(contactDetail.getAddress().getCity() + ", " + contactDetail.getAddress().getState() + " " + contactDetail.getAddress().getZip());
-                }
-                if(contactDetail.getPhoneNumber() != null){
-                    contactContInfoTextViewPhone.setText(contactDetail.getPhoneNumber());
-                }
-                if(contactDetail.geteContact() != null && contactDetail.geteContact().getEmail() != null){
-                    contactContInfoTextViewEmail.setText(contactDetail.geteContact().getEmail());
-                }
-                if(contactDetail.geteContact() != null && contactDetail.geteContact().getTwitter() != null){
-                    contactContInfoTextViewTwitter.setText(contactDetail.geteContact().getTwitter());
-                }
-                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getInterns() != null){
-                    for(String intern: contactDetail.getGovInfo().getInterns()) {
-                        contactInternTextViewName.setText(intern + "\n");
-                    }
-                }
-                if(contactDetail.getGovInfo() != null && contactDetail.getGovInfo().getCommittees() != null){
-                    for(CommitteeDetail committee: contactDetail.getGovInfo().getCommittees()) {
-                        contactCommitteeTextViewCommittee.setText(committee.getNameCommittee() + "\n");
-                    }
-                }
-                if(contactDetail.getEducation() != null){
-                    for(String education: contactDetail.getEducation()) {
-                        contactEduTextViewDegreeMajorSchool.setText(education + "\n");
-                    }
-                }
-
+                contactDetail.pullAdditionalDetail(contactNameTextViewName, contactNameTextViewParty, contactNameTextViewDistrict, contactNameTextViewLeadershipPosition, contactLocationTextViewLocation, contactContInfoTextViewStreet, contactContInfoTextViewCityStateZip, contactContInfoTextViewPhone, contactContInfoTextViewEmail, contactContInfoTextViewTwitter, contactInternTextViewName, contactCommitteeTextViewCommittee, contactEduTextViewDegreeMajorSchool);
                 showScreen(contact_detail1_overlay);
             }
 

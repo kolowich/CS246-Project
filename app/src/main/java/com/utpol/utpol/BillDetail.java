@@ -1,10 +1,12 @@
 package com.utpol.utpol;
 
+import android.widget.TextView;
+
 import com.parse.ParseObject;
 
 import java.util.Map;
 
-public class BillDetail implements DetailView {
+public class BillDetail{
 
     private String name;
     private String sponsor;

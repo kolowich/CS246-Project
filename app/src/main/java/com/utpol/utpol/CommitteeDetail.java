@@ -1,8 +1,10 @@
 package com.utpol.utpol;
 
+import android.widget.TextView;
+
 import java.util.List;
 
-public class CommitteeDetail implements DetailView {
+public class CommitteeDetail{
 
     private List<Member> members;
     private String nameCommittee;
