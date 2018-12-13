@@ -246,17 +246,17 @@ MainActivity extends AppCompatActivity {
             }
 
             if(billDetail != null) {
+                // TODO Pass all of the Views to the pullAdditionalDetail method
                 billDetail.pullAdditionalDetail();
                 showScreen(bill_detail1_overlay);
 
-                // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
 
             if(committeeDetail != null) {
+                // TODO Pass all of the Views to the pullAdditionalDetail method
                 committeeDetail.pullAdditionalDetail();
                 showScreen(committee_detail_overlay);
 
-                // TODO Add the code to display the contact in the various parts of the contact detail screen
             }
         }
     };
@@ -286,7 +286,6 @@ MainActivity extends AppCompatActivity {
 
     public void contactsClick(View view) {
         listContactDetail.pullList(contactListView);
-
         ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail.getDetails());
         contactListView.setAdapter(customAdapter);
         showScreen(contact_directory_overlay);

@@ -17,6 +17,8 @@ public class CommitteeDetail{
 
     public void pullAdditionalDetail(){
 
+        // TODO Add the code to display the contact in the various parts of the contact detail screen
+
     }
 
     public List<Member> getMembers() {

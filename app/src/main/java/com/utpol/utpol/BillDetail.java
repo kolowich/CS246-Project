@@ -27,6 +27,8 @@ public class BillDetail{
 
     public void pullAdditionalDetail(){
 
+        // TODO Add the code to display the contact in the various parts of the contact detail screen
+
     }
 
     public String getName() {
