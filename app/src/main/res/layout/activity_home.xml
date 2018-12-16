@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/homeTextView1"
+        android:id="@+id/homeTextViewDate"
         android:layout_width="105dp"
         android:layout_height="41dp"
         android:elevation="4dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/homeTextView2"
+        android:id="@+id/homeTextViewLocation"
         android:layout_width="293dp"
         android:layout_height="53dp"
         android:elevation="4dp"
@@ -37,10 +37,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView1" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewDate" />
 
     <TextView
-        android:id="@+id/homeTextView4"
+        android:id="@+id/homeTextViewMessage1"
         android:layout_width="362dp"
         android:layout_height="85dp"
         android:elevation="4dp"
@@ -53,10 +53,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewLocation" />
 
     <TextView
-        android:id="@+id/homeTextView5"
+        android:id="@+id/homeTextViewMessage2"
         android:layout_width="362dp"
         android:layout_height="wrap_content"
         android:elevation="4dp"
@@ -70,10 +70,10 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView4" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewMessage1" />
 
     <TextView
-        android:id="@+id/homeTextView3"
+        android:id="@+id/homeTextViewTipofDay"
         android:layout_width="230dp"
         android:layout_height="25dp"
         android:elevation="4dp"
@@ -83,13 +83,13 @@
         android:text="Tip of the day"
         android:textAlignment="textStart"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/homeTextView4"
+        app:layout_constraintBottom_toTopOf="@+id/homeTextViewMessage1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/homeTextView6"
+        android:id="@+id/homeTextViewMessage3"
         android:layout_width="362dp"
         android:layout_height="0dp"
         android:elevation="4dp"
@@ -105,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView5"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewMessage2"
         app:layout_constraintVertical_bias="1.0" />
 
     <android.support.constraint.Guideline
@@ -125,7 +125,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/contactsButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewMessage3" />
 
     <Button
         android:id="@+id/contactsButton"
@@ -137,7 +137,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/billsButton"
         app:layout_constraintStart_toEndOf="@+id/homeButton"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewMessage3" />
 
     <Button
         android:id="@+id/billsButton"
@@ -148,7 +148,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/committeeButton"
         app:layout_constraintStart_toEndOf="@+id/contactsButton"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewMessage3" />
 
     <Button
         android:id="@+id/committeeButton"
@@ -159,6 +159,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/billsButton"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextView6" />
+        app:layout_constraintTop_toBottomOf="@+id/homeTextViewMessage3" />
 
 </android.support.constraint.ConstraintLayout>

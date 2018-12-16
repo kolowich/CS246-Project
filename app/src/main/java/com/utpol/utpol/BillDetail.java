@@ -1,10 +1,12 @@
 package com.utpol.utpol;
 
+import android.widget.TextView;
+
 import com.parse.ParseObject;
 
 import java.util.Map;
 
-public class BillDetail implements DetailView {
+public class BillDetail{
 
     private String name;
     private String sponsor;
@@ -24,6 +26,8 @@ public class BillDetail implements DetailView {
     }
 
     public void pullAdditionalDetail(){
+
+        // TODO Add the code to display the contact in the various parts of the contact detail screen
 
     }
 
@@ -97,5 +101,12 @@ public class BillDetail implements DetailView {
 
     public void setVote(Map<String, Vote> vote) {
         this.vote = vote;
+    }
+
+    @Override
+    public String toString(){
+        String string = new String();
+        string = this.name + " " + this.committee.getNameCommittee();
+        return string;
     }
 }
