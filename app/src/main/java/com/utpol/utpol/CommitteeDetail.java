@@ -1,10 +1,8 @@
 package com.utpol.utpol;
 
-import android.widget.TextView;
-
 import java.util.List;
 
-public class CommitteeDetail{
+public class CommitteeDetail implements DetailView {
 
     private List<Member> members;
     private String nameCommittee;
@@ -16,8 +14,6 @@ public class CommitteeDetail{
     }
 
     public void pullAdditionalDetail(){
-
-        // TODO Add the code to display the contact in the various parts of the contact detail screen
 
     }
 
@@ -51,10 +47,5 @@ public class CommitteeDetail{
 
     public void setLocationNextMeeting(String locationNextMeeting) {
         this.locationNextMeeting = locationNextMeeting;
-    }
-
-    @Override
-    public String toString(){
-        return this.nameCommittee;
     }
 }

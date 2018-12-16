@@ -16,7 +16,7 @@ public class HomeScreen extends ConstraintLayout {
     public static final String LOCATION = "location";
 
     private List<String> messages;
-    private int date = 0;
+    private int date;
     private String location;
     private ContactList contacts;
     private BillList bills;
@@ -46,6 +46,9 @@ public class HomeScreen extends ConstraintLayout {
         contacts = new ContactList();
         committees = new CommitteeList();
 
+        bills.pullList();
+        contacts.pullList();
+        committees.pullList();
     }
 
 
@@ -64,10 +67,6 @@ public class HomeScreen extends ConstraintLayout {
 
     public void openCommittees(){
 
-    }
-
-    public void pullHomeScreenInfo(){
-        // TODO Add code to get the messages and other information for the Homescreen from the database.
     }
 
     public List<String> getMessages() {

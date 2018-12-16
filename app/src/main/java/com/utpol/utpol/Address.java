@@ -7,22 +7,7 @@ public class Address {
     private String state;
     private String zip;
 
-    public Address(String streetIn, String cityIn, String stateIn, String zipIn) {
-        street = streetIn;
-        city = cityIn;
-        state = stateIn;
-        zip = zipIn;
-    }
-
-    public Address() {
-    }
-
-    public String fullAddress() {
-        String out = new String();
-        out.concat(street).concat("\n").concat(city).concat(", ").concat(state).concat(" ").concat(zip);
-        System.out.println(out);
-
-        return out;
+    public Address(){
     }
 
     public String getStreet() {

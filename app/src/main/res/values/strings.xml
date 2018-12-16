@@ -7,8 +7,6 @@
     <string name="homeMessage2">Message2 example text display for #UTPOL. Last day to request bills or appropriations without floor approval.</string>
     <string name="homeMessage3">Message3 example text display for #UTPOL. Last day to approve bills or numbering without floor approval.</string>
     <string name="contactListTitle">Contacts</string>
-    <string name="billListTitle">Bills</string>
-    <string name="committeeListTitle">Committees</string>
 
 
 </resources>
