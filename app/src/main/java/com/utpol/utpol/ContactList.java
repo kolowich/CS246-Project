@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The type Contact list.
+ */
 public class ContactList extends Activity implements ListView {
 
     private static List<ContactDetail> details;
@@ -20,6 +23,11 @@ public class ContactList extends Activity implements ListView {
         details = new ArrayList<>();
     }
 
+    /**
+     * Pull list goes to the database and gets the list then sends it for display on the list screen.
+     *
+     * @param listView the listView that needs to be updated
+     */
     public void pullList(android.widget.ListView listView){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person");
         query.selectKeys(Arrays.asList("First","Last","Phone")).setLimit(500);
@@ -43,6 +51,14 @@ public class ContactList extends Activity implements ListView {
         });
     }
 
+    /**
+     * Add contact.
+     *
+     * @param objectId the object id
+     * @param first    the first
+     * @param last     the last
+     * @param number   the number
+     */
     public static void addContact(String objectId, String first, String last, String number) {
         boolean exists = false;
 

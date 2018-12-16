@@ -1,5 +1,8 @@
 package com.utpol.utpol;
 
+/**
+ * The enum Vote.
+ */
 public enum Vote {
 
     Yes("Yes"),

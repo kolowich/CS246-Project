@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * The type Interact.
+ */
 public class Interact {
 
 
@@ -22,6 +25,9 @@ public class Interact {
         response = new ArrayList<>();
     }
 
+    /**
+     * Server request connects to the database.
+     */
     public void serverRequest() {
         //successful query example
         Collection<String> keys = new ArrayList<>();
@@ -46,6 +52,10 @@ public class Interact {
             }
         });
     }
+
+    /**
+     * Print list.
+     */
     public void printList(){
         //other stuff
         for (ParseObject obj : response) {

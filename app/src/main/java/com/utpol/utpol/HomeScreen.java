@@ -11,6 +11,9 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
+/**
+ * The type Home screen.
+ */
 public class HomeScreen extends ConstraintLayout {
 
     public static final String LOCATION = "location";
@@ -23,7 +26,7 @@ public class HomeScreen extends ConstraintLayout {
     private CommitteeList committees;
 
     /**
-     *
+     * This displays the messages to the user for what they need to know that particular day.
      * @param context
      * @param locationIn
      */

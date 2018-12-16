@@ -2,6 +2,9 @@ package com.utpol.utpol;
 
 import java.util.List;
 
+/**
+ * The type Electronic.
+ */
 public class Electronic {
 
     private String email;

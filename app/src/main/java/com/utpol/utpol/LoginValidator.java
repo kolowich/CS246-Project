@@ -4,6 +4,9 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+/**
+ * The type Login validator.
+ */
 public class LoginValidator {
 
     private String username;
@@ -30,6 +33,9 @@ public class LoginValidator {
         return mainUser;
     }
 
+    /**
+     * Validate user and log in.
+     */
     public void validateUserAndLogIn() {
 
         ParseUser.logInInBackground(username, password, new LogInCallback() {

@@ -21,6 +21,9 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 
+/**
+ * The type Main activity.
+ */
 public class
 MainActivity extends AppCompatActivity {
 
@@ -163,6 +166,9 @@ MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Check validation.
+     */
     public static void checkValidation() {
         if(login != null && home != null) {
             if (login.isValidated()) {
@@ -192,6 +198,11 @@ MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Show screen. This removes the other screens from the display and shows the screen that is passed.
+     *
+     * @param overlay the overlay
+     */
     public void showScreen(ConstraintLayout overlay){
         home_overlay.animate().x(home_overlay.getWidth()).setDuration(animationDuration);
         loginView.animate().x(loginView.getWidth()).setDuration(animationDuration);
@@ -209,6 +220,10 @@ MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * The M message receiver. This allows the list view objects to be told which item was clicked on.
+     * The detail screen is then called up to be displayed.
+     */
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -261,6 +276,11 @@ MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Home button clicked and takes you to the home screen.
+     *
+     * @param view the view
+     */
     public void homeClick(View view) {
         home.pullHomeScreenInfo();
         showScreen(home_overlay);
@@ -284,6 +304,11 @@ MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Contacts button clicked takes you to the contacts directory screen.
+     *
+     * @param view the view
+     */
     public void contactsClick(View view) {
         listContactDetail.pullList(contactListView);
         ListViewLoader customAdapter = new ListViewLoader(this, listContactDetail.getDetails());
@@ -293,6 +318,11 @@ MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Bills button clicked takes you to the bills directory screen.
+     *
+     * @param view the view
+     */
     public void billsClick(View view) {
         listBillDetail.pullList(billListView);
         ListViewLoader customAdapter = new ListViewLoader(this, listBillDetail.getDetails());
@@ -301,6 +331,11 @@ MainActivity extends AppCompatActivity {
         billListView.setOnItemClickListener(new OnItemClickListenerListViewItem());
     }
 
+    /**
+     * Committee button clicked takes you to the committee directory screen.
+     *
+     * @param view the view
+     */
     public void committeeClick(View view) {
         listCommitteeDetail.pullList(committeeListView);
         ListViewLoader customAdapter = new ListViewLoader(this, listCommitteeDetail.getDetails());

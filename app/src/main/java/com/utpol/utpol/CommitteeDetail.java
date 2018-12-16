@@ -4,6 +4,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * The type Committee detail.
+ */
 public class CommitteeDetail{
 
     private List<Member> members;
@@ -15,6 +18,9 @@ public class CommitteeDetail{
     public CommitteeDetail(){
     }
 
+    /**
+     * Pull additional detail.
+     */
     public void pullAdditionalDetail(){
 
         // TODO Add the code to display the contact in the various parts of the contact detail screen

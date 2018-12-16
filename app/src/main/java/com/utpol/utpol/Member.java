@@ -1,5 +1,8 @@
 package com.utpol.utpol;
 
+/**
+ * The type Member.
+ */
 public class Member {
 
     private String nameFirst;

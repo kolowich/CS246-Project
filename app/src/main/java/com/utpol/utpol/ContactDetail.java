@@ -14,6 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Contact detail.
+ */
 public class ContactDetail extends Activity {
 
     private String objectID;
@@ -38,6 +41,23 @@ public class ContactDetail extends Activity {
         govInfo = new GovInfo();
     }
 
+    /**
+     * Pull additional detail gets the additional details from the database and sends them to the display.
+     *
+     * @param contactNameTextViewName               the contact name text view name
+     * @param contactNameTextViewParty              the contact name text view party
+     * @param contactNameTextViewDistrict           the contact name text view district
+     * @param contactNameTextViewLeadershipPosition the contact name text view leadership position
+     * @param contactLocationTextViewLocation       the contact location text view location
+     * @param contactContInfoTextViewStreet         the contact cont info text view street
+     * @param contactContInfoTextViewCityStateZip   the contact cont info text view city state zip
+     * @param contactContInfoTextViewPhone          the contact cont info text view phone
+     * @param contactContInfoTextViewEmail          the contact cont info text view email
+     * @param contactContInfoTextViewTwitter        the contact cont info text view twitter
+     * @param contactInternTextViewName             the contact intern text view name
+     * @param contactCommitteeTextViewCommittee     the contact committee text view committee
+     * @param contactEduTextViewDegreeMajorSchool   the contact edu text view degree major school
+     */
     public void pullAdditionalDetail(TextView contactNameTextViewName, TextView contactNameTextViewParty, TextView contactNameTextViewDistrict, TextView contactNameTextViewLeadershipPosition, TextView contactLocationTextViewLocation, TextView contactContInfoTextViewStreet, TextView contactContInfoTextViewCityStateZip, TextView contactContInfoTextViewPhone, TextView contactContInfoTextViewEmail, TextView contactContInfoTextViewTwitter, TextView contactInternTextViewName, TextView contactCommitteeTextViewCommittee, TextView contactEduTextViewDegreeMajorSchool){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Person").whereEqualTo("objectId", objectID);
 
@@ -101,6 +121,11 @@ public class ContactDetail extends Activity {
         });
     }
 
+    /**
+     * Add details.
+     *
+     * @param in the in
+     */
     public void addDetails(ParseObject in) {
         if(in.getString("Background") != null) {
             education.add(in.getString("Background"));

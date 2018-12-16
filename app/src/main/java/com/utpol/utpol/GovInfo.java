@@ -2,6 +2,9 @@ package com.utpol.utpol;
 
 import java.util.List;
 
+/**
+ * The type Gov info.
+ */
 public class GovInfo {
 
     private String party;

@@ -1,5 +1,8 @@
 package com.utpol.utpol;
 
+/**
+ * The type Address.
+ */
 public class Address {
 
     private String street;

@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * The type List view loader.
+ */
 public class ListViewLoader extends BaseAdapter {
 
 
@@ -37,6 +40,9 @@ public class ListViewLoader extends BaseAdapter {
         return 0;
     }
 
+    /**
+     * This creates an adaptor for the list view with text view objects inside of it for display.
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.activity_list_view, null);

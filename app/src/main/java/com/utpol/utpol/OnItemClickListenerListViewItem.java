@@ -8,8 +8,14 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * The type On item click listener list view item.
+ */
 public class OnItemClickListenerListViewItem implements AdapterView.OnItemClickListener {
 
+    /**
+     * This finds the text that is displayed in the text view inside the list view and sends a message with the information for the item that has been clicked.
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
