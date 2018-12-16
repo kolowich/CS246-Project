@@ -1,5 +1,6 @@
 package com.utpol.utpol;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillList implements ListView {
@@ -7,14 +8,14 @@ public class BillList implements ListView {
     private List<BillDetail> details;
 
     public BillList(){
+        details = new ArrayList<>();
     }
 
-    public void pullList(){
-
+    public static void addBill() {
     }
 
-    public void openDetail(){
-
+    public void pullList(android.widget.ListView listView){
+        // TODO Get the list of bills from the database and place them in the details
     }
 
     public List<BillDetail> getDetails() {
@@ -22,6 +23,6 @@ public class BillList implements ListView {
     }
 
     public void setDetails(List<BillDetail> details) {
-        this.details = details;
+        this.details.addAll(details);
     }
 }
